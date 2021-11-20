@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Teamo_Android</string>
+    <string name="text_register"><u>새 계정 만들기</u></string>
 </resources>
