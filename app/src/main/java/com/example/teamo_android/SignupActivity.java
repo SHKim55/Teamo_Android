@@ -19,7 +19,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void initElements() {
-        tempBtn2 = (TextView) findViewById(R.id.btn_temp_2);
+        tempBtn2 = (TextView) findViewById(R.id.btn_temp_signup);
 
         tempBtn2.setOnClickListener(new View.OnClickListener() {
             @Override

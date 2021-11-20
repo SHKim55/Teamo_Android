@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_title"
+        android:id="@+id/text_title_main"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/text_description_1"
+        android:id="@+id/text_description_1_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -30,11 +30,11 @@
         android:textSize="15sp"
         android:textColor="@color/theme_pink"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/text_title"
-        app:layout_constraintStart_toStartOf="@id/text_title"/>
+        app:layout_constraintTop_toBottomOf="@id/text_title_main"
+        app:layout_constraintStart_toStartOf="@id/text_title_main"/>
 
     <TextView
-        android:id="@+id/text_description_2"
+        android:id="@+id/text_description_2_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -43,11 +43,11 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:letterSpacing="1"
-        app:layout_constraintTop_toTopOf="@id/text_description_1"
-        app:layout_constraintStart_toEndOf="@id/text_description_1" />
+        app:layout_constraintTop_toTopOf="@id/text_description_1_main"
+        app:layout_constraintStart_toEndOf="@id/text_description_1_main" />
 
     <TextView
-        android:id="@+id/text_description_3"
+        android:id="@+id/text_description_3_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
@@ -55,11 +55,11 @@
         android:textSize="15sp"
         android:textColor="@color/theme_pink"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/text_description_1"
-        app:layout_constraintEnd_toStartOf="@id/text_description_4" />
+        app:layout_constraintTop_toTopOf="@id/text_description_1_main"
+        app:layout_constraintEnd_toStartOf="@id/text_description_4_main" />
 
     <TextView
-        android:id="@+id/text_description_4"
+        android:id="@+id/text_description_4_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -68,23 +68,23 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:letterSpacing="1"
-        app:layout_constraintTop_toTopOf="@id/text_description_1"
-        app:layout_constraintEnd_toEndOf="@id/text_title" />
+        app:layout_constraintTop_toTopOf="@id/text_description_1_main"
+        app:layout_constraintEnd_toEndOf="@id/text_title_main" />
 
     <ImageView
-        android:id="@+id/img_teamo"
+        android:id="@+id/img_teamo_main"
         android:layout_width="200dp"
         android:layout_height="180dp"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:src="@drawable/ic_teamo"
         android:scaleType="fitXY"
-        app:layout_constraintTop_toBottomOf="@id/text_description_1"
+        app:layout_constraintTop_toBottomOf="@id/text_description_1_main"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/text_newbee"
+        android:id="@+id/text_newbee_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -96,10 +96,10 @@
         android:letterSpacing="0.2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_signup"/>
+        app:layout_constraintEnd_toStartOf="@id/btn_signup_main"/>
 
     <TextView
-        android:id="@+id/btn_signup"
+        android:id="@+id/btn_signup_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
@@ -110,11 +110,11 @@
         android:textStyle="bold"
         android:letterSpacing="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/text_newbee"
+        app:layout_constraintStart_toEndOf="@id/text_newbee_main"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_login_main"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
@@ -125,7 +125,7 @@
         android:textColor="@color/white"
         android:letterSpacing="0.1"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@id/btn_signup"
+        app:layout_constraintBottom_toTopOf="@id/btn_signup_main"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
