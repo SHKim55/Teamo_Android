@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initElements() {
-        tempBtn = (TextView) findViewById(R.id.btn_temp);
+        tempBtn = (TextView) findViewById(R.id.btn_temp_login);
 
         tempBtn.setOnClickListener(new View.OnClickListener() {
             @Override

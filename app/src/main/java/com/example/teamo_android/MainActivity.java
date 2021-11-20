@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initElements() {
-        loginBtn = (Button) findViewById(R.id.btn_login);
-        singupBtn = (TextView) findViewById(R.id.btn_signup);
+        loginBtn = (Button) findViewById(R.id.btn_login_main);
+        singupBtn = (TextView) findViewById(R.id.btn_signup_main);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
