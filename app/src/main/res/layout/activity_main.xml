@@ -8,124 +8,15 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_title_main"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="티 모"
-        android:textSize="25sp"
-        android:textColor="@color/theme_pink"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/text_description_1_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="팀"
-        android:textSize="15sp"
-        android:textColor="@color/theme_pink"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/text_title_main"
-        app:layout_constraintStart_toStartOf="@id/text_title_main"/>
-
-    <TextView
-        android:id="@+id/text_description_2_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="원을"
-        android:textSize="15sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:letterSpacing="1"
-        app:layout_constraintTop_toTopOf="@id/text_description_1_main"
-        app:layout_constraintStart_toEndOf="@id/text_description_1_main" />
-
-    <TextView
-        android:id="@+id/text_description_3_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:text="모"
-        android:textSize="15sp"
-        android:textColor="@color/theme_pink"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/text_description_1_main"
-        app:layout_constraintEnd_toStartOf="@id/text_description_4_main" />
-
-    <TextView
-        android:id="@+id/text_description_4_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="으다"
-        android:textSize="15sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:letterSpacing="1"
-        app:layout_constraintTop_toTopOf="@id/text_description_1_main"
-        app:layout_constraintEnd_toEndOf="@id/text_title_main" />
-
-    <ImageView
-        android:id="@+id/img_teamo_main"
+        android:id="@+id/text_temp_main"
         android:layout_width="200dp"
         android:layout_height="180dp"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/ic_teamo"
-        android:scaleType="fitXY"
-        app:layout_constraintTop_toBottomOf="@id/text_description_1_main"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/text_newbee_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="70dp"
-        android:text="티모가 처음이신가요?"
-        android:textSize="13sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:letterSpacing="0.2"
+        android:text="MainActivity"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_signup_main"/>
-
-    <TextView
-        android:id="@+id/btn_signup_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="70dp"
-        android:text="@string/text_register"
-        android:textSize="13sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:letterSpacing="0.1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/text_newbee_main"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btn_login_main"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="@color/theme_pink"
-        android:text="Sign In"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        android:letterSpacing="0.1"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@id/btn_signup_main"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

@@ -9,7 +9,6 @@ import android.os.Looper;
 import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
-    private ImageView splashImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,8 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                finish();
                 startActivity(intent);
             }
         }, 2000);

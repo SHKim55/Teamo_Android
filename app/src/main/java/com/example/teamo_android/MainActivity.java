@@ -10,33 +10,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private Button loginBtn;
-    private TextView singupBtn;
+    private TextView tempText;
+    private String idText, passwordText, stringData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getDataFromIntent();
         initElements();
     }
 
-    private void initElements() {
-        loginBtn = (Button) findViewById(R.id.btn_login_main);
-        singupBtn = (TextView) findViewById(R.id.btn_signup_main);
+    private void getDataFromIntent() {
+        Intent prev_intent = getIntent();
+        idText = prev_intent.getStringExtra("id");
+        passwordText = prev_intent.getStringExtra("password");
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        stringData = idText + " " + passwordText;
+    }
+
+    private void initElements() {
+        tempText = (TextView) findViewById(R.id.text_temp_main);
+        tempText.setText(stringData);
+
+        tempText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        singupBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                finish();
                 startActivity(intent);
             }
         });
