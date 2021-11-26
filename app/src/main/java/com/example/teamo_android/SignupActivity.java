@@ -18,6 +18,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import java.time.Duration;
 import java.util.regex.Pattern;
 
@@ -172,6 +175,8 @@ public class SignupActivity extends AppCompatActivity {
 
     // ID 중복확인을 위한 서버 통신 파트
     private void checkIdValidity() {
+
+
         idCheck.setVisibility(View.VISIBLE);
         checkValidId = true;
         Toast.makeText(SignupActivity.this, "중복확인 버튼 클릭", Toast.LENGTH_SHORT).show();
