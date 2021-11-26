@@ -3,11 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.146875" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.146875" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/drawable/main_btm_color_selector.xml" value="0.1921875" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/drawable/shape_circle_grey.xml" value="0.146875" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_create_team.xml" value="0.13072916666666667" />
         <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_email_confirmation.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_home.xml" value="0.17604166666666668" />
         <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_notification.xml" value="0.13072916666666667" />
         <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_signup.xml" value="0.176" />
         <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_splash.xml" value="0.11354166666666667" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/fragment_mypage.xml" value="0.13072916666666667" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/fragment_search.xml" value="0.13072916666666667" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.72" />
       </map>
     </option>
   </component>
