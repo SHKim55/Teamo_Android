@@ -18,7 +18,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.time.Duration;
@@ -33,6 +37,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private String idText, passwordText, nameText, deptNameText, admissionYearText;
     private Boolean checkId = false, checkValidId = false, checkPassword = false, checkName = false, checkDeptName = false, checkAdmissionYear = false;
+    public RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,11 +180,29 @@ public class SignupActivity extends AppCompatActivity {
 
     // ID 중복확인을 위한 서버 통신 파트
     private void checkIdValidity() {
-
-
-        idCheck.setVisibility(View.VISIBLE);
-        checkValidId = true;
-        Toast.makeText(SignupActivity.this, "중복확인 버튼 클릭", Toast.LENGTH_SHORT).show();
+        queue = Volley.newRequestQueue(getApplicationContext());
+        String idValidationUrl = getString(R.string.url) + "/user/id/validation/" + idText;
+        Log.d("idis", idValidationUrl);
+        final StringRequest request = new StringRequest(Request.Method.GET, idValidationUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equals("true")) {  // 중복된 경우
+                            checkValidId = false;
+                        } else {   // 없는 경우
+                            idCheck.setVisibility(View.VISIBLE);
+                            checkValidId = true;
+                            Toast.makeText(getApplicationContext(),  "아이디 사용가능.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("thisis", error.toString());
+                Toast.makeText(getApplicationContext(),  "서버 통신 중 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(request);
     }
 
     // 사용자 정보 저장을 위한 서버 통신 파트
