@@ -17,6 +17,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import java.util.regex.Pattern;
 
 public class EmailConfirmationActivity extends AppCompatActivity {
@@ -28,6 +31,8 @@ public class EmailConfirmationActivity extends AppCompatActivity {
     private String emailText, passcodeText;
     private String idText, passwordText, nameText, deptNameText, admissionYearText;
     private Boolean checkEmail = false, checkValidEmail = false, checkPasscode = false;
+
+    private final RequestQueue queue = Volley.newRequestQueue(EmailConfirmationActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
