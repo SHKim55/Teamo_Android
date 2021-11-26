@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_grey"
-    tools:context=".SignupActivity">
+    tools:context=".EmailConfirmationActivity">
 
     <ImageView
-        android:id="@+id/img_teamo_signup"
+        android:id="@+id/img_teamo_emailconfirm"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
@@ -18,19 +18,19 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/edit_id_signup"
+        android:id="@+id/edit_email_emailconfirm"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:layout_marginStart="30dp"
-        android:hint="아이디를 입력해주세요"
+        android:hint="이메일을 입력해주세요"
         android:textColorHint="@color/white"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/img_teamo_signup"
+        app:layout_constraintTop_toBottomOf="@id/img_teamo_emailconfirm"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_id_validation_signup"
+        android:id="@+id/btn_email_validation_emailconfirm"
         android:layout_width="80dp"
         android:layout_height="45dp"
         android:layout_marginStart="10dp"
@@ -44,112 +44,68 @@
         android:textStyle="bold"
         android:letterSpacing="0.1"
         android:textAllCaps="false"
-        app:layout_constraintTop_toTopOf="@id/edit_id_signup"
-        app:layout_constraintBottom_toBottomOf="@id/edit_id_signup"
-        app:layout_constraintStart_toEndOf="@id/edit_id_signup"
+        app:layout_constraintTop_toTopOf="@id/edit_email_emailconfirm"
+        app:layout_constraintBottom_toBottomOf="@id/edit_email_emailconfirm"
+        app:layout_constraintStart_toEndOf="@id/edit_email_emailconfirm"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/text_id_check_signup"
+        android:id="@+id/text_email_check_emailconfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="사용 가능한 아이디입니다."
+        android:text="인증되었습니다."
         android:textSize="10sp"
-        app:layout_constraintTop_toBottomOf="@id/text_id_condition_signup"
+        app:layout_constraintTop_toBottomOf="@id/text_email_condition_emailconfirm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone"/>
 
     <TextView
-        android:id="@+id/text_id_condition_signup"
+        android:id="@+id/text_email_condition_emailconfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="아이디는 영문, 숫자 포함 5자리 이상입니다."
+        android:text="이메일 형식이 올바르지 않습니다."
         android:textSize="10sp"
-        app:layout_constraintTop_toBottomOf="@id/edit_id_signup"
+        app:layout_constraintTop_toBottomOf="@id/edit_email_emailconfirm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone"/>
 
     <EditText
-        android:id="@+id/edit_password_signup"
+        android:id="@+id/edit_passcode_emailconfirm"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:layout_marginStart="30dp"
         android:inputType="textPassword"
-        android:hint="비밀번호를 입력해주세요"
+        android:hint="인증번호를 입력해주세요"
         android:textColorHint="@color/white"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/edit_id_signup"
+        app:layout_constraintTop_toBottomOf="@id/edit_email_emailconfirm"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/text_password_condition_signup"
+        android:id="@+id/text_passcode_check_emailconfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="비밀번호는 영문, 숫자 포함 7자리 이상입니다."
+        android:text="인증번호가 다릅니다."
         android:textSize="10sp"
-        app:layout_constraintTop_toBottomOf="@id/edit_password_signup"
+        app:layout_constraintTop_toBottomOf="@id/edit_passcode_emailconfirm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone"/>
 
-    <EditText
-        android:id="@+id/edit_name_signup"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="30dp"
-        android:inputType="text"
-        android:hint="이름을 입력해주세요"
-        android:textColorHint="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/edit_password_signup"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:padding="0dp"
-        app:layout_constraintTop_toBottomOf="@id/edit_name_signup">
-
-        <Spinner
-            android:id="@+id/spin_dept_name_signup"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-            android:padding="0dp"
-            android:autofillHints="학과 선택"
-            android:entries="@array/dept_name"
-            android:spinnerMode="dropdown"
-            android:layout_centerHorizontal="true" />
-
-        <Spinner
-            android:id="@+id/spin_admission_year_signup"
-            android:layout_width="110dp"
-            android:layout_height="40dp"
-            android:padding="0dp"
-            android:autofillHints="학과"
-            android:entries="@array/admission_year"
-            android:spinnerMode="dropdown"
-            android:layout_centerHorizontal="true" />
-    </LinearLayout>
-
     <Button
-        android:id="@+id/btn_next_signup"
+        android:id="@+id/btn_signup_emailconfirm"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/theme_pink"
-        android:text="Next"
+        android:text="Sign Up"
         android:textSize="25sp"
         android:textColor="@color/white"
         android:letterSpacing="0.1"

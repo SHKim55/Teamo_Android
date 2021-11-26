@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_login.xml" value="0.152" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_email_confirmation.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_signup.xml" value="0.1125" />
+        <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_signup.xml" value="0.176" />
         <entry key="..\:/Users/5061k/AndroidStudioProjects/Teamo_Android/app/src/main/res/layout/activity_splash.xml" value="0.11354166666666667" />
         <entry key="..\:/Users/master/StudioProjects/Teamo_Android/app/src/main/res/layout/activity_login.xml" value="0.152" />
         <entry key="..\:/Users/master/StudioProjects/Teamo_Android/app/src/main/res/layout/activity_main.xml" value="0.264" />

@@ -1,0 +1,158 @@
+package com.example.teamo_android;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.regex.Pattern;
+
+public class EmailConfirmationActivity extends AppCompatActivity {
+    private ImageView tempBtn3;
+    private EditText emailEdit, passcodeEdit;
+    private Button emailCheckBtn, signupBtn;
+    private TextView emailCondition, emailCheck, passcodeCheck;
+
+    private String emailText, passcodeText;
+    private String idText, passwordText, nameText, deptNameText, admissionYearText;
+    private Boolean checkEmail = false, checkValidEmail = false, checkPasscode = false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_email_confirmation);
+
+        getDataFromIntent();
+        initElements();
+    }
+
+    private void getDataFromIntent() {
+        Intent prev_intent = getIntent();
+        idText = prev_intent.getStringExtra("id");
+        passwordText = prev_intent.getStringExtra("password");
+        nameText = prev_intent.getStringExtra("name");
+        deptNameText = prev_intent.getStringExtra("deptName");
+        admissionYearText = prev_intent.getStringExtra("admissionYear");
+    }
+
+    private void initElements() {
+        tempBtn3 = (ImageView) findViewById(R.id.img_teamo_emailconfirm);
+        emailEdit = (EditText) findViewById(R.id.edit_email_emailconfirm);
+        passcodeEdit = (EditText) findViewById(R.id.edit_passcode_emailconfirm);
+        emailCheckBtn = (Button) findViewById(R.id.btn_email_validation_emailconfirm);
+        signupBtn = (Button) findViewById(R.id.btn_signup_emailconfirm);
+        emailCondition = (TextView) findViewById(R.id.text_email_condition_emailconfirm);
+        emailCheck = (TextView) findViewById(R.id.text_email_check_emailconfirm);
+        passcodeCheck = (TextView) findViewById(R.id.text_passcode_check_emailconfirm);
+
+        initOnClickListeners();
+    }
+
+    private void initOnClickListeners() {
+        tempBtn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EmailConfirmationActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        signupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkEmail && checkValidEmail && checkPasscode)
+                    confirmRegister();
+                else {
+                    Toast.makeText(EmailConfirmationActivity.this, "입력하신 정보를 다시 한 번 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        emailCheckBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { checkEmailValidity(); }
+        });
+
+        emailEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String email = s.toString();
+
+                if(!Patterns.EMAIL_ADDRESS.matcher(s.toString()).matches()) {
+                    emailCondition.setVisibility(View.VISIBLE);
+                    checkEmail = false;
+                }
+                else {
+                    emailCondition.setVisibility(View.GONE);
+                    emailText = email;
+                    checkEmail = true;
+                }
+            }
+        });
+
+        passcodeEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String passcode = s.toString();
+                passcodeCheck.setVisibility(View.GONE);
+                passcodeText = passcode;
+                checkPasscode = true;
+
+//                // 학교 이메일로 확인 메일 전송 및 인증번호 생성 필요
+//                // 인증번호와 입력한 값이 같으면 checkPasscode = true
+//                if(!password.equals("[인증번호]")) {
+//                    passcodeCheck.setVisibility(View.VISIBLE);
+//                    checkPasscode = false;
+//                }
+//                else {
+//                    passcodeCheck.setVisibility(View.GONE);
+//                    passcodeText = password;
+//                    checkPasscode = true;
+//                }
+            }
+        });
+    }
+
+    // 학교 이메일 형식 확인을 위한 서버 통신 파트
+    private void checkEmailValidity() {
+        emailCheck.setVisibility(View.VISIBLE);
+        checkValidEmail = true;
+    }
+
+    // 회원가입 완료 후 홈 화면으로 이동
+    private void confirmRegister() {
+        Intent next_intent = new Intent(EmailConfirmationActivity.this, LoginActivity.class);
+        next_intent.putExtra("id", idText);
+        next_intent.putExtra("password", passwordText);
+        next_intent.putExtra("name", nameText);
+        next_intent.putExtra("deptName", deptNameText);
+        next_intent.putExtra("admissionYear", admissionYearText);
+
+        finish();
+        startActivity(next_intent);
+    }
+}

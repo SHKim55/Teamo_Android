@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dept_name">
+        <item>학과 선택</item>
+        <item>소프트웨어학부(컴퓨터공학부)</item>
+        <item>AI학과</item>
+    </string-array>
+
+    <string-array name="admission_year">
+        <item>학번 선택</item>
+        <item>21학번</item>
+        <item>20학번</item>
+        <item>19학번</item>
+        <item>18학번</item>
+        <item>17학번</item>
+        <item>16학번 이전</item>
+    </string-array>
+</resources>
