@@ -189,6 +189,7 @@ public class SignupActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.equals("true")) {  // 중복된 경우
                             checkValidId = false;
+                            Toast.makeText(getApplicationContext(),  "중복된 아이디입니다.", Toast.LENGTH_SHORT).show();
                         } else {   // 없는 경우
                             idCheck.setVisibility(View.VISIBLE);
                             checkValidId = true;
