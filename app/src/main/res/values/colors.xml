@@ -13,6 +13,7 @@
     <color name="theme_skyblue">#E6EFFA</color>
     <color name="theme_yellow">#F3FACD</color>
     <color name="theme_dark_green">#AAAD97</color>
+    <color name="background_color">#F2EEE3</color>
     <color name="theme_mild_yellow">#F2EEE3</color>
     <color name="background_dark_grey">#9BABB2</color>
     <color name="title_dark_green">#7C9194</color>
