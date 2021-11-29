@@ -4,21 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.regex.Pattern;
 
@@ -28,16 +34,21 @@ public class EmailConfirmationActivity extends AppCompatActivity {
     private Button emailCheckBtn, signupBtn;
     private TextView emailCondition, emailCheck, passcodeCheck;
 
-    private String emailText, passcodeText;
+    private String emailText, passcodeText, emailPasscodeText;
     private String idText, passwordText, nameText, deptNameText, admissionYearText;
     private Boolean checkEmail = false, checkValidEmail = false, checkPasscode = false;
 
-    private final RequestQueue queue = Volley.newRequestQueue(EmailConfirmationActivity.this);
+    private RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_confirmation);
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .permitDiskReads()
+                .permitDiskWrites()
+                .permitNetwork().build());
 
         getDataFromIntent();
         initElements();
@@ -74,7 +85,7 @@ public class EmailConfirmationActivity extends AppCompatActivity {
             }
         });
 
-        signupBtn.setOnClickListener(new View.OnClickListener() {
+        signupBtn.setOnClickListener(new View.OnClickListener() {   // 다 맞으면 다음 activity로 넘어간다.
             @Override
             public void onClick(View view) {
                 if(checkEmail && checkValidEmail && checkPasscode)
@@ -85,12 +96,12 @@ public class EmailConfirmationActivity extends AppCompatActivity {
             }
         });
 
-        emailCheckBtn.setOnClickListener(new View.OnClickListener() {
+        emailCheckBtn.setOnClickListener(new View.OnClickListener() {   // emailCheckBtn 중복 확인
             @Override
             public void onClick(View view) { checkEmailValidity(); }
         });
 
-        emailEdit.addTextChangedListener(new TextWatcher() {
+        emailEdit.addTextChangedListener(new TextWatcher() {   // valid한 이메일인지 확인
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
@@ -100,8 +111,7 @@ public class EmailConfirmationActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String email = s.toString();
-
-                if(!Patterns.EMAIL_ADDRESS.matcher(s.toString()).matches()) {
+                if(!Pattern.matches("^[a-zA-Z0-9]+@[cau.ac.kr]+$", email)) {
                     emailCondition.setVisibility(View.VISIBLE);
                     checkEmail = false;
                 }
@@ -127,36 +137,85 @@ public class EmailConfirmationActivity extends AppCompatActivity {
                 passcodeText = passcode;
                 checkPasscode = true;
 
-//                // 학교 이메일로 확인 메일 전송 및 인증번호 생성 필요
-//                // 인증번호와 입력한 값이 같으면 checkPasscode = true
-//                if(!password.equals("[인증번호]")) {
-//                    passcodeCheck.setVisibility(View.VISIBLE);
-//                    checkPasscode = false;
-//                }
-//                else {
-//                    passcodeCheck.setVisibility(View.GONE);
-//                    passcodeText = password;
-//                    checkPasscode = true;
-//                }
+                // 학교 이메일로 확인 메일 전송 및 인증번호 생성 필요
+                // 인증번호와 입력한 값이 같으면 checkPasscode = true
+                if(!passcode.equals(emailPasscodeText)) {
+                    passcodeCheck.setVisibility(View.VISIBLE);
+                    checkPasscode = false;
+                }
+                else {
+                    passcodeCheck.setVisibility(View.GONE);
+                    passcodeText = passcode;
+                    checkPasscode = true;
+                }
             }
         });
     }
 
     // 학교 이메일 형식 확인을 위한 서버 통신 파트
     private void checkEmailValidity() {
-        emailCheck.setVisibility(View.VISIBLE);
-        checkValidEmail = true;
+        queue = Volley.newRequestQueue(EmailConfirmationActivity.this);
+        String emailValidationApi = getString(R.string.url) + "/user/email/validation/" + emailText;
+
+        Log.e("email", emailValidationApi);
+        final StringRequest request = new StringRequest(Request.Method.GET, emailValidationApi,
+                new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.equals("true")) {  // 중복된 경우
+                    emailCheck.setVisibility(View.VISIBLE);
+                    checkValidEmail = false;
+                } else {   // 없는 경우
+                    checkValidEmail = true;
+                    SendMail mail = new SendMail();
+                    mail.sendSecurityCode(getApplicationContext(), emailText);
+                    Log.i("email", emailText + "으로 전송함");
+                    emailPasscodeText = mail.getCode();
+                    Log.i("email", emailPasscodeText + "임");
+                    signUp();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(EmailConfirmationActivity.this, "서버 통신 중 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(request);
+    }
+
+    private void signUp() {
+        JSONObject signUpObject = new JSONObject();
+        try {
+            signUpObject.put("id", idText);
+            signUpObject.put("password", passwordText);
+            signUpObject.put("name", nameText);
+            signUpObject.put("email", emailText);
+            signUpObject.put("department", deptNameText);
+            signUpObject.put("std_num", admissionYearText);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        queue = Volley.newRequestQueue(EmailConfirmationActivity.this);
+        String signUpApi = getString(R.string.url) + "/user";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, signUpApi, signUpObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("signUp_success", "회원가입 성공");
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(EmailConfirmationActivity.this, "회원 가입에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(request);
     }
 
     // 회원가입 완료 후 홈 화면으로 이동
     private void confirmRegister() {
         Intent next_intent = new Intent(EmailConfirmationActivity.this, LoginActivity.class);
-        next_intent.putExtra("id", idText);
-        next_intent.putExtra("password", passwordText);
-        next_intent.putExtra("name", nameText);
-        next_intent.putExtra("deptName", deptNameText);
-        next_intent.putExtra("admissionYear", admissionYearText);
-
         finish();
         startActivity(next_intent);
     }
