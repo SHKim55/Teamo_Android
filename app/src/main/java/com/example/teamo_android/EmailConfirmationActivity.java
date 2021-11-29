@@ -19,8 +19,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.regex.Pattern;
 
@@ -168,7 +172,7 @@ public class EmailConfirmationActivity extends AppCompatActivity {
                     Log.i("email", emailText + "으로 전송함");
                     emailPasscodeText = mail.getCode();
                     Log.i("email", emailPasscodeText + "임");
-                    //sendMail();
+                    signUp();
                 }
             }
         }, new Response.ErrorListener() {
@@ -180,19 +184,38 @@ public class EmailConfirmationActivity extends AppCompatActivity {
         queue.add(request);
     }
 
-    private void sendMail() {
-
+    private void signUp() {
+        JSONObject signUpObject = new JSONObject();
+        try {
+            signUpObject.put("id", idText);
+            signUpObject.put("password", passwordText);
+            signUpObject.put("name", nameText);
+            signUpObject.put("email", emailText);
+            signUpObject.put("department", deptNameText);
+            signUpObject.put("std_num", admissionYearText);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        queue = Volley.newRequestQueue(EmailConfirmationActivity.this);
+        String signUpApi = getString(R.string.url) + "/user";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, signUpApi, signUpObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("signUp_success", "회원가입 성공");
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(EmailConfirmationActivity.this, "회원 가입에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(request);
     }
 
     // 회원가입 완료 후 홈 화면으로 이동
     private void confirmRegister() {
         Intent next_intent = new Intent(EmailConfirmationActivity.this, LoginActivity.class);
-        next_intent.putExtra("id", idText);
-        next_intent.putExtra("password", passwordText);
-        next_intent.putExtra("name", nameText);
-        next_intent.putExtra("deptName", deptNameText);
-        next_intent.putExtra("admissionYear", admissionYearText);
-
         finish();
         startActivity(next_intent);
     }

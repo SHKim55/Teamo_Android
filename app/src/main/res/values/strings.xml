@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Teamo_Android</string>
     <string name="text_register"><u>새 계정 만들기</u></string>
-    <string name="url">http://daea-219-255-207-60.ngrok.io</string>
+    <string name="url">http://fe97-221-150-102-170.ngrok.io</string>
 </resources>
