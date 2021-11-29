@@ -3,19 +3,33 @@ package com.example.teamo_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {
-    private Button loginBtn;
-    private EditText idEdit, passwordEdit;
-    private TextView signupBtn;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
-    private String idText, passwordText;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class LoginActivity extends AppCompatActivity {
+    private EditText idEdit, passwordEdit;
+
+    private RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +40,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initElements() {
-        loginBtn = (Button) findViewById(R.id.btn_confirm_login);
+        Button loginBtn = (Button) findViewById(R.id.btn_confirm_login);
         idEdit = (EditText) findViewById(R.id.edit_id_login);
         passwordEdit = (EditText) findViewById(R.id.edit_password_login);
-        signupBtn = (TextView) findViewById(R.id.btn_signup_login);
+        TextView signupBtn = (TextView) findViewById(R.id.btn_signup_login);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,21 +60,50 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void saveToken(JSONObject response) throws JSONException {
+        SharedPreferences sharedPreferences = getSharedPreferences("token", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Authorization", response.get("access_token").toString());
+        editor.apply();
+    }
+
     private void logIn() {
-        idText = idEdit.getText().toString();
-        passwordText = passwordEdit.getText().toString();
+        String idText = idEdit.getText().toString();  // id
+        String passwordText = passwordEdit.getText().toString();  // password
 
-        // 서버랑 id, pw 비교하는 문장 if 안에 작성
-        if(true) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra("id", idText);
-            intent.putExtra("password", passwordText);
+        String loginApi = getString(R.string.url) + "/auth/login";
+        queue = Volley.newRequestQueue(LoginActivity.this);
 
-            finish();
-            startActivity(intent);
+        // 로그인 객체 생성
+        JSONObject loginObject = new JSONObject();
+        try {
+            loginObject.put("userid", idText);
+            loginObject.put("password", passwordText);
+        } catch (JSONException e) {
+            Log.e("login_JSONException", e.toString());
         }
-        else {
-            Toast.makeText(LoginActivity.this, "아이디, 비밀번호를 다시 확인하세요.", Toast.LENGTH_SHORT).show();
-        }
+
+        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, loginApi, loginObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            saveToken(response);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            finish();
+                            startActivity(intent);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Log.e("save_token_error", e.toString());
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.getStackTrace();
+                Toast.makeText(LoginActivity.this, "등록되지 않은 사용자입니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(request);
     }
 }
