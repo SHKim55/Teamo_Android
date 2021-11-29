@@ -10,98 +10,110 @@
         android:id="@+id/layout_top_bar_main"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/text_title_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="TEAMO"
-            android:textSize="23sp"
-            android:textColor="@color/title_dark_green"
-            android:textStyle="bold"
             android:letterSpacing="0.2"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="TEAMO"
+            android:textColor="@color/title_dark_green"
+            android:textSize="23sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/img_teamo_main"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="20dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_teamo"
+            android:layout_marginStart="20dp"
             android:scaleType="fitXY"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_teamo"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/btn_notification_main"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_main_notification"
+            android:layout_marginEnd="20dp"
             android:scaleType="fitXY"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_main_notification"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
+        android:id="@+id/home_recyclerview_scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/theme_mild_yellow"
+        app:layout_constraintVertical_weight="9"
         app:layout_constraintTop_toBottomOf="@id/layout_top_bar_main"
         app:layout_constraintBottom_toTopOf="@id/layout_bottom_bar_main"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
-
-        <TextView
-            android:id="@+id/text_find_team_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="팀원을 구해보세요!"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_teams_main"
+        android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/home_recyclerview_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            tools:listitem="@layout/item_team"
-            android:clipToPadding="true"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/text_find_team_main"
+            android:background="@color/theme_mild_yellow"
+            app:layout_constraintTop_toBottomOf="@id/layout_top_bar_main"
+            app:layout_constraintBottom_toTopOf="@id/layout_bottom_bar_main"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" >
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/text_find_team_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="팀원을 구해보세요!"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_teams_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/item_team"
+                android:clipToPadding="true"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/text_find_team_main"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_bottom_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="1000dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
         android:background="@color/background_dark_grey"
+        app:layout_constraintTop_toBottomOf="@+id/home_recyclerview_scroll"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/btn_search_main"
@@ -109,19 +121,19 @@
             android:layout_height="35dp"
             android:layout_marginStart="30dp"
             android:background="@drawable/ic_main_search"
-            app:layout_constraintTop_toTopOf="@id/layout_bottom_bar_main"
             app:layout_constraintBottom_toBottomOf="@id/layout_bottom_bar_main"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layout_bottom_bar_main" />
 
         <ImageView
             android:id="@+id/btn_create_main"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/ic_main_newproject"
-            app:layout_constraintTop_toTopOf="@id/layout_bottom_bar_main"
             app:layout_constraintBottom_toBottomOf="@id/layout_bottom_bar_main"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/layout_bottom_bar_main" />
 
         <ImageView
             android:id="@+id/btn_mypage_main"
@@ -129,9 +141,9 @@
             android:layout_height="35dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/ic_main_mypage"
-            app:layout_constraintTop_toTopOf="@id/layout_bottom_bar_main"
             app:layout_constraintBottom_toBottomOf="@id/layout_bottom_bar_main"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layout_bottom_bar_main" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
