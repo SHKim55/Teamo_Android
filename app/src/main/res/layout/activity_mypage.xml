@@ -7,17 +7,133 @@
     android:background="@color/theme_mild_yellow"
     tools:context=".MypageActivity">
 
-    <TextView
-        android:layout_width="300dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_top_bar_mypage"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_title_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:letterSpacing="0.2"
+            android:text="내 프로필"
+            android:textColor="@color/title_dark_green"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_back_mypage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/btn_previous_page"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_tab_mypage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="My Page Activity"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_top_bar_mypage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <ImageView
+            android:id="@+id/img_profile_mypage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="40dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_mypage_demo_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_name_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="김은솔"
+            android:textColor="@color/theme_grey"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/img_profile_mypage"
+            app:layout_constraintTop_toTopOf="@id/img_profile_mypage" />
+
+        <TextView
+            android:id="@+id/text_department_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="소프트웨어학부"
+            android:textColor="@color/theme_grey"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/img_profile_mypage"
+            app:layout_constraintBottom_toBottomOf="@id/img_profile_mypage" />
+
+        <TextView
+            android:id="@+id/text_admission_year_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="20학번"
+            android:textColor="@color/theme_grey"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/text_department_mypage"
+            app:layout_constraintBottom_toBottomOf="@id/img_profile_mypage" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_content_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="40dp"
+            app:tabGravity="center"
+            app:tabBackground="@color/theme_mild_yellow"
+            app:tabTextColor="@color/black"
+            app:tabRippleColor="#00FF0000"
+            app:tabInlineLabel="true"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_department_mypage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_vp_mypage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/layout_tab_mypage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" >
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_content_mypage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="ifContentScrolls"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
