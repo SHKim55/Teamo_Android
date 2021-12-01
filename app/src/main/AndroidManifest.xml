@@ -33,6 +33,11 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
 
         </activity>
         <activity android:name=".SignupActivity" />
@@ -40,14 +45,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".EmailConfirmationActivity" />
-        <activity android:name=".CreateTeamActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".CreateTeamActivity"/>
     </application>
 
 </manifest>

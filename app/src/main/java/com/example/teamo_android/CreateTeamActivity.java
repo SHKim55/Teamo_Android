@@ -18,7 +18,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CreateTeamActivity extends AppCompatActivity {
-    private RequestQueue queue;
     private String subjectName, semesterYear, semesterMonth, professorName, classNumber;
     private boolean checkSubject = false, checkSemesterYear = false, checkSemesterMonth = false, checkProfessor = false, checkClassNumber = false;
     private String year = null, month = null;
@@ -53,8 +52,7 @@ public class CreateTeamActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 checkSemesterYear = i != 0;    // 0이면 false, 나머지는 true
-                year = binding.semesterYearSpinner.getItemAtPosition(i).toString();
-                Toast.makeText(CreateTeamActivity.this, binding.semesterYearSpinner.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
+                year = binding.semesterYearSpinner.getItemAtPosition(i).toString() + "Y";
             }
 
             @Override
@@ -68,7 +66,6 @@ public class CreateTeamActivity extends AppCompatActivity {
                 checkSemesterMonth = i != 0;
                 String monthText = binding.semesterMonthSpinner.getItemAtPosition(i).toString();
                 month = String.valueOf(monthText.charAt(0)) + "S";
-                Toast.makeText(CreateTeamActivity.this, binding.semesterMonthSpinner.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -108,6 +105,11 @@ public class CreateTeamActivity extends AppCompatActivity {
             newTeam.setCourseClass(classNumberText);
         }
         else checkClassNumber = false;
+
+        String semesterText = year + month;
+        if(checkSemesterYear && checkSemesterMonth) {
+            newTeam.setSemester(semesterText);
+        }
     }
 
     // 입력된 정보를 Intent 로 전송
