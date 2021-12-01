@@ -1,17 +1,21 @@
 package com.example.teamo_android;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Team implements Serializable {
-    private int id;
-    private String title;
-    private String content;
-    private String leaderName;
-    private int maxMemberNum;
-    private String subject;
-    private String semester;
-    private String professor;
-    private String courseClass;
+    private int id = 0;
+    private String title = null;
+    private String content = null;
+    private String leaderName = null;
+    private int maxMemberNum= 0;
+    private String subject = null;
+    private String semester = null;
+    private String professor = null;
+    private String courseClass = null;
+
+    Team() {}
 
     Team(int id, String title, String leaderName, int memberNum, String subject, String semester, String professor, String courseClass) {
         this.id = id;
@@ -22,7 +26,6 @@ public class Team implements Serializable {
         this.semester = semester;
         this.professor = professor;
         this.courseClass = courseClass;
-
         this.content = makeContent(this.subject, this.semester, this.professor, this.courseClass);
     }
 
