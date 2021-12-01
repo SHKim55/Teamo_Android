@@ -1,6 +1,5 @@
 package com.example.teamo_android;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,15 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 
@@ -25,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView teamsRV;
     private RecyclerView.LayoutManager layoutManager;
 
-    ArrayList<Team> teamsData = new ArrayList<Team>();
+    private User currentUser;
     private String idText, passwordText;
+
+    public ArrayList<Team> teamsData = new ArrayList<Team>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getContent());
 
                 Intent intent = new Intent(MainActivity.this, TeamDetailActivity.class);
-                intent.putExtra("temp", team.getTitle());
+                intent.putExtra("id", team.getTeamId());
                 startActivity(intent);
             }
         });
