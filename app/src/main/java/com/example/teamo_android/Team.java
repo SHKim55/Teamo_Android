@@ -13,6 +13,9 @@ public class Team implements Serializable {
     private String subject = null;
     private String semester = null;
     private String professor = null;
+
+
+
     private String courseClass = null;
 
     Team() {}
@@ -50,6 +53,12 @@ public class Team implements Serializable {
     public void setSemester(String semester) { this.semester = semester; }
     public void setProfessor(String professor) { this.professor = professor; }
     public void setCourseClass(String num) { this.courseClass = num; }
+    public void setContent(String content) {
+        this.content = content;
+    }
+    public void setMaxMemberNum(int maxMemberNum) {
+        this.maxMemberNum = maxMemberNum;
+    }
 
     public void setContent(String subject, String semester, String professor, String courseClass) {
         makeContent(subject, semester, professor, courseClass);
