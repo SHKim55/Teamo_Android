@@ -15,4 +15,17 @@
         <item>17학번</item>
         <item>16학번 이전</item>
     </string-array>
+    
+    <string-array name="year">
+        <item>개설년도</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+    </string-array>
+
+    <string-array name="month">
+        <item>학기</item>
+        <item>1학기</item>
+        <item>2학기</item>
+    </string-array>
 </resources>
