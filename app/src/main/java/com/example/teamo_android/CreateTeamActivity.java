@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,6 +36,7 @@ public class CreateTeamActivity extends AppCompatActivity {
     }
 
     private void initElements() {
+        newTeam = new Team();
         yearAdapter = ArrayAdapter.createFromResource(
                 this, R.array.year, R.layout.spinner_item);
         yearAdapter.setDropDownViewResource(R.layout.spinner_item);
@@ -86,21 +88,22 @@ public class CreateTeamActivity extends AppCompatActivity {
 
     private void setNewTeam() {
         String subjectText = binding.subjectEdit.getText().toString();
-        if(!subjectText.equals("")) {
+        if(!subjectText.isEmpty() && !(subjectText == null)) {
             checkSubject = true;
+            Log.i("subject", subjectText);
             newTeam.setSubject(subjectText);
         }
         else checkSubject = false;
 
         String professorText = binding.professorNameEdit.getText().toString();
-        if(!professorText.equals("")) {
+        if(!professorText.isEmpty()&& !(professorText == null)) {
             checkProfessor = true;
             newTeam.setProfessor(professorText);
         }
         else checkProfessor = false;
 
         String classNumberText = binding.classEdit.getText().toString();
-        if(!classNumberText.equals("")) {
+        if(!classNumberText.isEmpty()&& !(classNumberText == null)) {
             checkClassNumber = true;
             newTeam.setCourseClass(classNumberText);
         }

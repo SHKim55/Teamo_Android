@@ -69,10 +69,10 @@ public class MyTeamFragment extends Fragment {
             myTeamsData.clear();
 
         myTeamsData.add(new Team(1, "객지프 팀플 버스 태워드립니다.", "김은솔", 4,
-                "객체지향프로그래밍", "2021-2", "손봉수", 2));
+                "객체지향프로그래밍", "2021-2", "손봉수", "2"));
 
         myTeamsData.add(new Team(3, "방탈출 같이 하실 분?", "김은솔", 4,
-                "프로그래밍", "2021-2", "조용진", 2));
+                "프로그래밍", "2021-2", "조용진", "2"));
     }
 
     // 실제 서버에서 해당 데이터를 받아오는 파트

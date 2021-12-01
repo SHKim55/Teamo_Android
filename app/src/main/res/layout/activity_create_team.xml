@@ -67,6 +67,7 @@
                 android:paddingLeft="15dp"
                 android:textColorHint="#7C9194"
                 android:textSize="15sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/subject_text"
                 app:layout_constraintTop_toBottomOf="@+id/subject_text" />
 
@@ -129,6 +130,7 @@
                 android:paddingLeft="15dp"
                 android:textColorHint="#7C9194"
                 android:textSize="15sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/professor_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/professor_name_text" />
 
@@ -156,6 +158,7 @@
                 android:paddingLeft="15dp"
                 android:textColorHint="#7C9194"
                 android:textSize="15sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/class_text"
                 app:layout_constraintTop_toBottomOf="@+id/class_text" />
 
