@@ -10,7 +10,7 @@ public class TeamDetailActivity extends AppCompatActivity {
     private TextView temp;
 
     private Team team;
-    private int tempId;
+    private String tempId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class TeamDetailActivity extends AppCompatActivity {
 
     private void getDataFromIntent() {
         Intent prev_intent = getIntent();
-        tempId = prev_intent.getIntExtra("id", 0);
+        tempId = prev_intent.getStringExtra("id");
 
         // 넘겨받은 아이디 값과 일치하는 아이디를 가진 Team 정보를 서버로부터 불러와 team에 저장한다.
     }

@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 
 public class Team implements Serializable {
-    private int id = 0;
+    private String id = null;
     private String title = null;
     private String content = null;
     private String leaderName = null;
@@ -20,7 +20,7 @@ public class Team implements Serializable {
 
     Team() {}
 
-    Team(int id, String title, String leaderName, int memberNum, String subject, String semester, String professor, String courseClass) {
+    Team(String id, String title, String leaderName, int memberNum, String subject, String semester, String professor, String courseClass) {
         this.id = id;
         this.title = title;
         this.leaderName = leaderName;
@@ -38,7 +38,7 @@ public class Team implements Serializable {
         return content;
     }
 
-    public int getTeamId() { return this.id; }
+    public String getTeamId() { return this.id; }
     public String getTitle() { return this.title; }
     public String getLeaderName() { return this.leaderName; }
     public int getMaxNumber() { return this.maxMemberNum; }
