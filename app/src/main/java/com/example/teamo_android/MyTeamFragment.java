@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -40,7 +43,7 @@ public class MyTeamFragment extends Fragment {
 
         adapter.setItemClickListener(new MyTeamRVAdapter.MyTeamItemClickListener() {
             @Override
-            public void onItemClick(Team team) {
+            public void onRequestListButtonClick(Team team) {
                 Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getContent());
 
                 Intent intent = new Intent(requireContext(), TeamDetailActivity.class);
@@ -49,15 +52,34 @@ public class MyTeamFragment extends Fragment {
             }
 
             @Override
-            public void onEditButtonClick(Team team) {
-                // 글 수정 기능 추가
+            public void onMenuButtonClick(Team team, int index) {
+                ImageView menuButton = getActivity().findViewById(R.id.btn_menu_my_team);
+
+                final PopupMenu popupMenu = new PopupMenu(getContext(), menuButton);
+                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        if (menuItem.getItemId() == R.id.edit_menu_popup){
+                            Intent intent = new Intent(getContext(), CreateTeamActivity.class);
+                            intent.putExtra("team", team);
+                            startActivity(intent);
+                        } else {
+                            myTeamsData.remove(index);
+                            adapter.notifyDataSetChanged();
+
+                            Toast.makeText(getActivity(), "삭제되었습니다.", Toast.LENGTH_SHORT);
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
             }
 
             @Override
             public void onDeleteButtonClick(int index) {
-                myTeamsData.remove(index);
 
-                Toast.makeText(getContext(), "삭제되었습니다.", Toast.LENGTH_SHORT);
             }
         });
 
@@ -68,10 +90,10 @@ public class MyTeamFragment extends Fragment {
         if (!myTeamsData.isEmpty())
             myTeamsData.clear();
 
-        myTeamsData.add(new Team(1, "객지프 팀플 버스 태워드립니다.", "김은솔", 4,
+        myTeamsData.add(new Team("1", "객지프 팀플 버스 태워드립니다.", "김은솔", 4,
                 "객체지향프로그래밍", "2021-2", "손봉수", "2"));
 
-        myTeamsData.add(new Team(3, "방탈출 같이 하실 분?", "김은솔", 4,
+        myTeamsData.add(new Team("3", "방탈출 같이 하실 분?", "김은솔", 4,
                 "프로그래밍", "2021-2", "조용진", "2"));
     }
 

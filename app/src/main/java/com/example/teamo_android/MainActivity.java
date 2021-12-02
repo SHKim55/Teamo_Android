@@ -45,19 +45,19 @@ public class MainActivity extends AppCompatActivity {
         if (!teamsData.isEmpty())
             teamsData.clear();
 
-        teamsData.add(new Team(1, "객지프 팀플 버스 태워드립니다.", "김은솔", 4,
+        teamsData.add(new Team("1", "객지프 팀플 버스 태워드립니다.", "김은솔", 4,
                 "객체지향프로그래밍", "2021-2", "손봉수", "2"));
 
-        teamsData.add(new Team(2, "백엔드 킹갓이 DB 버스 태워드립니다.", "김재훈", 3,
+        teamsData.add(new Team("2", "백엔드 킹갓이 DB 버스 태워드립니다.", "김재훈", 3,
                 "데이터베이스설계", "2021-2", "강현철", "3"));
 
-        teamsData.add(new Team(3, "방탈출 같이 하실 분?", "김은솔", 4,
+        teamsData.add(new Team("3", "방탈출 같이 하실 분?", "김은솔", 4,
                 "프로그래밍", "2021-2", "조용진", "2"));
 
-        teamsData.add(new Team(4, "캡디 팀원 구합니다.", "이수민", 6,
+        teamsData.add(new Team("4", "캡디 팀원 구합니다.", "이수민", 6,
                 "캡스톤디자인 I", "2021-2", "김은우", "1"));
 
-        teamsData.add(new Team(5, "말하는 감자들 환영합니다.", "김선호", 5,
+        teamsData.add(new Team("5", "말하는 감자들 환영합니다.", "김선호", 5,
                 "기초컴퓨터프로그래밍", "2021-2", "이창하", "1"));
     }
 
