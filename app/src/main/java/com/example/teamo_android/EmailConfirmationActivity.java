@@ -29,7 +29,7 @@ import org.json.JSONObject;
 import java.util.regex.Pattern;
 
 public class EmailConfirmationActivity extends AppCompatActivity {
-    private ImageView tempBtn3;
+    private ImageView backBtn;
     private EditText emailEdit, passcodeEdit;
     private Button emailCheckBtn, signupBtn;
     private TextView emailCondition, emailCheck, passcodeCheck;
@@ -64,7 +64,7 @@ public class EmailConfirmationActivity extends AppCompatActivity {
     }
 
     private void initElements() {
-        tempBtn3 = (ImageView) findViewById(R.id.img_teamo_emailconfirm);
+        backBtn = (ImageView) findViewById(R.id.btn_back_emailconfirm);
         emailEdit = (EditText) findViewById(R.id.edit_email_emailconfirm);
         passcodeEdit = (EditText) findViewById(R.id.edit_passcode_emailconfirm);
         emailCheckBtn = (Button) findViewById(R.id.btn_email_validation_emailconfirm);
@@ -77,7 +77,7 @@ public class EmailConfirmationActivity extends AppCompatActivity {
     }
 
     private void initOnClickListeners() {
-        tempBtn3.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EmailConfirmationActivity.this, SignupActivity.class);
