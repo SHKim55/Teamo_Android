@@ -25,7 +25,6 @@ public class MyTeamFragment extends Fragment {
 
     public ArrayList<Team> myTeamsData = new ArrayList<Team>();
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,11 +74,6 @@ public class MyTeamFragment extends Fragment {
                     }
                 });
                 popupMenu.show();
-            }
-
-            @Override
-            public void onDeleteButtonClick(int index) {
-
             }
         });
 

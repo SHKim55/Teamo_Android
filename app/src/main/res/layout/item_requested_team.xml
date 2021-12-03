@@ -68,53 +68,61 @@
             app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@id/layout_info_requested_team"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
         <ImageView
-            android:id="@+id/btn_request_requested_team"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_approval_requested_team"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_join_request"
-            android:scaleType="fitXY"
+            android:background="@drawable/btn_join_approved"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:visibility="visible" />
 
         <ImageView
-            android:id="@+id/btn_waiting_requested_team"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_join_request_completed"
-            android:scaleType="fitXY"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/btn_approved_requested_team"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_join_approved"
-            android:scaleType="fitXY"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/btn_denied_requested_team"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_denial_requested_team"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_join_denied"
-            android:scaleType="fitXY"
-            android:visibility="gone" />
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="invisible" />
 
-        <!--         오른쪽 버튼은 삭제 코드-->
         <ImageView
             android:id="@+id/btn_cancel_requested_team"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_join_cancel"
-            android:scaleType="fitXY" />
-    </LinearLayout>
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/btn_new_notification_requested_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="120dp"
+            android:background="@drawable/ic_new_notification"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="@id/btn_approval_requested_team"
+            app:layout_constraintBottom_toBottomOf="@id/btn_approval_requested_team"
+            app:layout_constraintStart_toStartOf="@id/btn_approval_requested_team"
+            app:layout_constraintEnd_toEndOf="@id/btn_approval_requested_team"
+            android:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

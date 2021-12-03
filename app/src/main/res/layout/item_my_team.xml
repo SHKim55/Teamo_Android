@@ -112,23 +112,7 @@
             app:layout_constraintTop_toTopOf="@id/btn_request_list_my_team"
             app:layout_constraintBottom_toBottomOf="@id/btn_request_list_my_team"
             app:layout_constraintStart_toStartOf="@id/btn_request_list_my_team"
-            app:layout_constraintEnd_toEndOf="@id/btn_request_list_my_team"/>
+            app:layout_constraintEnd_toEndOf="@id/btn_request_list_my_team"
+            android:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-<!--        <ImageView-->
-<!--            android:id="@+id/btn_edit_my_team"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/btn_myteam_edit"-->
-<!--            android:scaleType="fitXY" />-->
-
-<!--&lt;!&ndash;         오른쪽 버튼은 삭제 코드&ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:id="@+id/btn_delete_my_team"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/btn_join_cancel"-->
-<!--            android:scaleType="fitXY" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

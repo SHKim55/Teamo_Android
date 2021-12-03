@@ -16,7 +16,6 @@ public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeam
     interface MyTeamItemClickListener {
         void onRequestListButtonClick(Team team);
         void onMenuButtonClick(Team team, int index);
-        void onDeleteButtonClick(int index);
     }
 
     private MyTeamItemClickListener itemClickListener;

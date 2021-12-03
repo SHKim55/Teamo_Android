@@ -24,6 +24,7 @@ public class CreateTeamActivity extends AppCompatActivity {
     private ActivityCreateTeamBinding binding;
     private ArrayAdapter yearAdapter, monthAdapter;
     private Team newTeam;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
