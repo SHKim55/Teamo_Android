@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject object = postings.getJSONObject(i);
                                     Team team = new Team(object.get("id").toString(), object.getString("title"), Integer.parseInt(object.getString("member_number")),
                                             object.getString("subject"), object.getString("semester"), object.getString("professor"), object.getString("class"),
-                                            object.getString("date"), object.getString("content"), object.getString("writerId"));
+                                            object.getString("date"), object.getString("content"), object.getString("writer"));
                                     teamsData.add(team);
                                 }
                                 total += len;
@@ -123,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
                                             JSONObject object = postings.getJSONObject(i);
                                             Team team = new Team(object.get("id").toString(), object.getString("title"), Integer.parseInt(object.getString("member_number")),
                                                     object.getString("subject"), object.getString("semester"), object.getString("professor"), object.getString("class"),
-                                                    object.getString("date"), object.getString("content"), object.getString("writerId"));
+                                                    object.getString("date"), object.getString("content"), object.getString("writer"));
+                                            Log.i("writer", object.getString("writer"));
                                             teamsData.add(team);
                                             // if(i == len - 1) pageNum++;
                                         }

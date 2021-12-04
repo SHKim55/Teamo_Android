@@ -82,7 +82,7 @@ public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeam
             requestListButton = (ImageView) itemView.findViewById(R.id.btn_request_list_my_team);
 
             // 팀 인원 현황 추후 반영
-            String memberNumText = "1 / " + team.getMaxNumber() + "  모집 중";
+            String memberNumText = "1 / " + team.getMaxMemberNum() + "  모집 중";
 
             // 최근 업데이트 시간 반영 기능 추후 추가
             //String updateText = "방금 전";
