@@ -20,4 +20,5 @@
     <color name="mild_green">#F4F7F0</color>
     <color name="trans_white">#80FFFFFF</color>
     <color name="dark_dark_grey">#A5A2A2</color>
+    <color name="dark_grey">#707070</color>
 </resources>
