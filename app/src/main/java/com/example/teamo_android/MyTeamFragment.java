@@ -21,14 +21,12 @@ import java.util.ArrayList;
 public class MyTeamFragment extends Fragment {
     private RecyclerView myTeamRV;
     private RecyclerView.LayoutManager layoutManager;
-
     public ArrayList<Team> myTeamsData = new ArrayList<Team>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_team, container, false);
-        initTempDB();
 
         myTeamRV = (RecyclerView) view.findViewById(R.id.rv_teams_my_team);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -65,7 +63,6 @@ public class MyTeamFragment extends Fragment {
                         } else {
                             myTeamsData.remove(index);
                             adapter.notifyDataSetChanged();
-
                             Toast.makeText(getActivity(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                         }
                         return false;
@@ -76,11 +73,6 @@ public class MyTeamFragment extends Fragment {
         });
 
         return view;
-    }
-
-    private void initTempDB() {
-        if (!myTeamsData.isEmpty())
-            myTeamsData.clear();
     }
 
     // 실제 서버에서 해당 데이터를 받아오는 파트

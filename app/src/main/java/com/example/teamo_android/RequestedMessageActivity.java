@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
-public class RequestedMessage extends AppCompatActivity {
+public class RequestedMessageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +24,12 @@ public class RequestedMessage extends AppCompatActivity {
         setContentView(R.layout.activity_requested_message);
 
         //UI 객체생성
-        txtText = (TextView)findViewById(R.id.txtText);
+        //txtText = (TextView)findViewById(R.id.txtText);
 
         //데이터 가져오기
         Intent intent = getIntent();
         String data = intent.getStringExtra("data");
-        txtText.setText(data);
+        //txtText.setText(data);
     }
 
     //확인 버튼 클릭

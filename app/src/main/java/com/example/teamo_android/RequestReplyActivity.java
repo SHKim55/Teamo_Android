@@ -3,7 +3,7 @@ package com.example.teamo_android;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class RequestReply extends AppCompatActivity {
+public class RequestReplyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
