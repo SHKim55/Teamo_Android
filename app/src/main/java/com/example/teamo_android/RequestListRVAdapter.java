@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,7 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
     interface RequestListItemClickListener {
         void onItemClick(User user);
         void onApprovalButtonClick(User user);
-        void onWaitButtonClick(int index);
+        void onWaitingButtonClick(int index);
     }
 
     private RequestListRVAdapter.RequestListItemClickListener itemClickListener;
@@ -52,7 +51,7 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
 
             @Override
             public void onClick(View view) {
-                itemClickListener.onWaitButtonClick(selectedPosition);
+                itemClickListener.onWaitingButtonClick(selectedPosition);
                 notifyDataSetChanged();
             }
         });
@@ -83,12 +82,9 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
             denyTv = (TextView) itemView.findViewById(R.id.text_denial_request_list);
             waitTv = (TextView) itemView.findViewById(R.id.text_waiting_request_list);
 
-            //String updateText = "방금 전";
-
             nameTv.setText(user.getUserName());
             departmentTv.setText(user.getDepartment());
             studentNumTv.setText(user.getStudentNum());
-            //recentUpdateTv.setText("");
 
             switch(checkRequestStatus("approved")) {
                 case -1:
