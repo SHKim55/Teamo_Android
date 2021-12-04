@@ -39,6 +39,8 @@ public class TeamDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // 신청 팝업
+//                Intent intent = new Intent(TeamDetailActivity.this, RequestActivity.class);
+//                startActivity(intent);
             }
         });
     }
@@ -48,10 +50,10 @@ public class TeamDetailActivity extends AppCompatActivity {
         team = (Team) prev_intent.getSerializableExtra("team");
         binding = DataBindingUtil.setContentView(this, R.layout.activity_team_detail);
         queue = Volley.newRequestQueue(getApplicationContext());
+        //String semester = team.getSemester().par
         String maxMemberNumber = "모집 인원 : " + String.valueOf(team.getMaxMemberNum());
         binding.postingTitle.setText(team.getTitle());
-        binding.postingContent.setText(team.getTag());
-        binding.postingDate.setText(team.getDate());
+        binding.postingDate.setText(team.getDate().substring(0, 10));
         binding.postingTag.setText(team.getTag());
         binding.postingContent.setText(team.getContent());
         binding.postingMemberNum.setText(maxMemberNumber);
