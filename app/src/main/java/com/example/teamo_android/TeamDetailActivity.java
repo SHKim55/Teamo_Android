@@ -43,6 +43,15 @@ public class TeamDetailActivity extends AppCompatActivity {
 //                startActivity(intent);
             }
         });
+
+        binding.btnBackTeamDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TeamDetailActivity.this, MainActivity.class);
+                finish();
+                startActivity(intent);
+            }
+        });
     }
 
     private void initElements() {

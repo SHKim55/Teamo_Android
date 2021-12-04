@@ -44,17 +44,14 @@ public class RequestListActivity extends AppCompatActivity {
         adapter.setItemClickListener(new RequestListRVAdapter.RequestListItemClickListener() {
             @Override
             public void onItemClick(User user) {
-
+                Intent intent = new Intent(RequestListActivity.this, RequestedMessageActivity.class);
+                startActivity(intent);
             }
 
             @Override
-            public void onApprovalButtonClick(User user) {
-
-            }
-
-            @Override
-            public void onWaitingButtonClick(int index) {
-
+            public void onApprovalButtonClick() {
+                Intent intent = new Intent(RequestListActivity.this, RequestReplyActivity.class);
+                startActivity(intent);
             }
         });
 

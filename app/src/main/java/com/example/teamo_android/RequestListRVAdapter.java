@@ -14,8 +14,7 @@ import java.util.ArrayList;
 public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdapter.RequestListViewHolder> {
     interface RequestListItemClickListener {
         void onItemClick(User user);
-        void onApprovalButtonClick(User user);
-        void onWaitingButtonClick(int index);
+        void onApprovalButtonClick();
     }
 
     private RequestListRVAdapter.RequestListItemClickListener itemClickListener;
@@ -46,13 +45,12 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
             }
         });
 
-        viewHolder.itemView.findViewById(R.id.text_waiting_request_list).setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemView.findViewById(R.id.text_approval_request_list).setOnClickListener(new View.OnClickListener() {
             int selectedPosition = viewHolder.getBindingAdapterPosition();
 
             @Override
             public void onClick(View view) {
-                itemClickListener.onWaitingButtonClick(selectedPosition);
-                notifyDataSetChanged();
+                itemClickListener.onApprovalButtonClick();
             }
         });
     }
