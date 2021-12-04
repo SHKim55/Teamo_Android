@@ -39,6 +39,8 @@ public class TeamDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // 신청 팝업
+//                Intent intent = new Intent(TeamDetailActivity.this, RequestActivity.class);
+//                startActivity(intent);
             }
         });
     }
