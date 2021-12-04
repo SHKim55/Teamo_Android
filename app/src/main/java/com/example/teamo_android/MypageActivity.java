@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ public class MypageActivity extends AppCompatActivity {
     private TextView name, department, admissionYear;
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
+    private String token = null;
 
     public User currentUser;
 
@@ -33,13 +35,16 @@ public class MypageActivity extends AppCompatActivity {
     }
 
     private void initElements() {
+        SharedPreferences sharedPreferences = getSharedPreferences("token", MODE_PRIVATE);
+        token = sharedPreferences.getString("token", null);
+
         backButton = (ImageView) findViewById(R.id.btn_back_mypage);
         name = (TextView) findViewById(R.id.text_name_mypage);
         department = (TextView) findViewById(R.id.text_department_mypage);
         admissionYear = (TextView) findViewById(R.id.text_admission_year_mypage);
 
         // 임시 유저 정보 입력. 현재 로그인 한 유저 정보를 받아와야함
-        currentUser = new User(0, "admin", "admin01", "aaa@naver.com", "킹갓은솔", "소프트웨어학부", 20);
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
