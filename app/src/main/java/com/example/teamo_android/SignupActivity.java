@@ -158,7 +158,7 @@ public class SignupActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                deptNameText = "";
+                deptNameText = null;
                 checkDeptName = false;
             }
         });
@@ -172,7 +172,7 @@ public class SignupActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                admissionYearText = "";
+                admissionYearText = null;
                 checkAdmissionYear = false;
             }
         });

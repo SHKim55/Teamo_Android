@@ -3,7 +3,6 @@ package com.example.teamo_android;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.core.app.ComponentActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +29,6 @@ public class MyTeamFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_team, container, false);
         initTempDB();
-        //loadData();
 
         myTeamRV = (RecyclerView) view.findViewById(R.id.rv_teams_my_team);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -43,7 +41,7 @@ public class MyTeamFragment extends Fragment {
         adapter.setItemClickListener(new MyTeamRVAdapter.MyTeamItemClickListener() {
             @Override
             public void onRequestListButtonClick(Team team) {
-                Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getContent());
+                Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getTag());
 
                 Intent intent = new Intent(requireContext(), TeamDetailActivity.class);
                 intent.putExtra("id", team.getTeamId());
@@ -68,7 +66,7 @@ public class MyTeamFragment extends Fragment {
                             myTeamsData.remove(index);
                             adapter.notifyDataSetChanged();
 
-                            Toast.makeText(getActivity(), "삭제되었습니다.", Toast.LENGTH_SHORT);
+                            Toast.makeText(getActivity(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                         }
                         return false;
                     }
@@ -83,12 +81,6 @@ public class MyTeamFragment extends Fragment {
     private void initTempDB() {
         if (!myTeamsData.isEmpty())
             myTeamsData.clear();
-
-        myTeamsData.add(new Team("1", "객지프 팀플 버스 태워드립니다.", "김은솔", 4,
-                "객체지향프로그래밍", "2021-2", "손봉수", "2"));
-
-        myTeamsData.add(new Team("3", "방탈출 같이 하실 분?", "김은솔", 4,
-                "프로그래밍", "2021-2", "조용진", "2"));
     }
 
     // 실제 서버에서 해당 데이터를 받아오는 파트

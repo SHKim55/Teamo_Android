@@ -20,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.teamo_android.databinding.ActivityCreatePostContentBinding;
-import com.example.teamo_android.databinding.ActivityCreateTeamBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -106,7 +105,7 @@ public class CreatePostContentActivity extends AppCompatActivity {
         String content = binding.postingContentEdit.getText().toString();
         if(!content.isEmpty() && !(content == null)) {
             checkContent = true;
-            newTeam.setContent(content);
+            newTeam.setTag(content);
         }
     }
 
@@ -117,7 +116,7 @@ public class CreatePostContentActivity extends AppCompatActivity {
         String postingApi = getString(R.string.url) + "/posting";
         try {
             posting.put("title", newTeam.getTitle());
-            posting.put("content", newTeam.getContent());
+            posting.put("content", newTeam.getTag());
             posting.put("member_number", newTeam.getMaxNumber());
             posting.put("subject", newTeam.getSubject());
             posting.put("semester", newTeam.getSemester());

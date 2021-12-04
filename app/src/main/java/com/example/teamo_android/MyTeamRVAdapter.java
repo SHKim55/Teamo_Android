@@ -88,7 +88,7 @@ public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeam
             //String updateText = "방금 전";
 
             titleTv.setText(team.getTitle());
-            descriptionTv.setText(team.getContent());
+            descriptionTv.setText(team.getTag());
             memberCountTv.setText(memberNumText);
             //recentUpdateTv.setText("");
         }

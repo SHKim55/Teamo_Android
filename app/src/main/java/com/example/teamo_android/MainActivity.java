@@ -17,7 +17,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private TeamsRVAdapter adapter;
     private int pageNum = 0, total = 0;
     private User currentUser;
-    private String idText, passwordText;
+    private String idText, passwordText, writerId;
     private boolean checkMore = true;
 
     public ArrayList<Team> teamsData = new ArrayList<Team>();
@@ -47,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getDataFromIntent();
-        //initTempDB();
         initElements();
         initRV();
         getPostList();
@@ -77,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, String.valueOf(len), Toast.LENGTH_SHORT).show();
                                 for(int i = 0; i<len; i++) {
                                     JSONObject object = postings.getJSONObject(i);
-                                    Team team = new Team(object.get("id").toString(), object.getString("title"), null, Integer.parseInt(object.getString("member_number")),
-                                            object.getString("subject"), object.getString("semester"), object.getString("professor"), object.getString("class"));
+                                    Team team = new Team(object.get("id").toString(), object.getString("title"), Integer.parseInt(object.getString("member_number")),
+                                            object.getString("subject"), object.getString("semester"), object.getString("professor"), object.getString("class"),
+                                            object.getString("date"), object.getString("content"), object.getString("writerId"));
                                     teamsData.add(team);
-                                    // if(i == len - 1) pageNum++;
                                 }
                                 total += len;
                                 adapter.notifyItemInserted(teamsData.size() - 1);
@@ -123,8 +121,9 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(MainActivity.this, String.valueOf(len), Toast.LENGTH_SHORT).show();
                                         for(int i = 0; i<len; i++) {
                                             JSONObject object = postings.getJSONObject(i);
-                                            Team team = new Team(object.get("id").toString(), object.getString("title"), null, Integer.parseInt(object.getString("member_number")),
-                                                    object.getString("subject"), object.getString("semester"), object.getString("professor"), object.getString("class"));
+                                            Team team = new Team(object.get("id").toString(), object.getString("title"), Integer.parseInt(object.getString("member_number")),
+                                                    object.getString("subject"), object.getString("semester"), object.getString("professor"), object.getString("class"),
+                                                    object.getString("date"), object.getString("content"), object.getString("writerId"));
                                             teamsData.add(team);
                                             // if(i == len - 1) pageNum++;
                                         }
@@ -228,10 +227,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.setItemClickListener(new TeamsRVAdapter.TeamsItemClickListener() {
             @Override
             public void onItemClick(Team team) {
-                Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getContent());
+                Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getTag());
 
                 Intent intent = new Intent(MainActivity.this, TeamDetailActivity.class);
-                intent.putExtra("id", team.getTeamId());
+                intent.putExtra("team", team);
                 startActivity(intent);
             }
         });
