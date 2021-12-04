@@ -40,6 +40,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
+        android:fontFamily="@font/nanumsquareroundr"
         app:layout_constraintTop_toBottomOf="@id/img_teamo_emailconfirm"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -58,6 +59,7 @@
         android:textStyle="bold"
         android:letterSpacing="0.1"
         android:textAllCaps="false"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toTopOf="@id/edit_email_emailconfirm"
         app:layout_constraintBottom_toBottomOf="@id/edit_email_emailconfirm"
         app:layout_constraintStart_toEndOf="@id/edit_email_emailconfirm"
@@ -71,6 +73,7 @@
         android:text="인증되었습니다."
         android:textSize="10sp"
         android:textColor="@color/theme_pink"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toBottomOf="@id/text_email_condition_emailconfirm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +87,7 @@
         android:text="이메일 형식이 올바르지 않습니다."
         android:textSize="10sp"
         android:textColor="@color/theme_pink"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toBottomOf="@id/edit_email_emailconfirm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,6 +105,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
+        android:fontFamily="@font/nanumsquareroundr"
         app:layout_constraintTop_toBottomOf="@id/edit_email_emailconfirm"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -112,6 +117,7 @@
         android:text="인증번호가 다릅니다."
         android:textSize="10sp"
         android:textColor="@color/theme_pink"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toBottomOf="@id/edit_passcode_emailconfirm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,6 +135,7 @@
         android:textColor="@color/white"
         android:letterSpacing="0.1"
         android:textAllCaps="false"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
