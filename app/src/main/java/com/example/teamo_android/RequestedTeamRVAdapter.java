@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class RequestedTeamRVAdapter extends RecyclerView.Adapter<RequestedTeamRVAdapter.RequestedTeamViewHolder> {
     interface RequestedTeamItemClickListener {
         void onItemClick(Team team);
-        void onRequestButtonClick(Team team);
+        void onApprovalButtonClick(Team team);
         void onCancelButtonClick(int index);
     }
 
@@ -57,6 +57,16 @@ public class RequestedTeamRVAdapter extends RecyclerView.Adapter<RequestedTeamRV
                 notifyDataSetChanged();
             }
         });
+
+        viewHolder.itemView.findViewById(R.id.btn_approval_requested_team).setOnClickListener(new View.OnClickListener() {
+            int selectedPosition = viewHolder.getBindingAdapterPosition();
+
+            @Override
+            public void onClick(View view) {
+                itemClickListener.onApprovalButtonClick(requestedTeamsData.get(selectedPosition));
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -68,7 +78,7 @@ public class RequestedTeamRVAdapter extends RecyclerView.Adapter<RequestedTeamRV
 
     public static class RequestedTeamViewHolder extends RecyclerView.ViewHolder {
         TextView titleTv, descriptionTv, memberCountTv, recentUpdateTv;
-        ImageView requestButton, cancelButton, waitButton, approveButton, denyButton;
+        ImageView approveButton, denyButton, cancelButton, newNotificationIv;
 
         public RequestedTeamViewHolder(@NonNull View itemView, RequestedTeamItemClickListener itemClickListener) {
             super(itemView);
@@ -79,10 +89,10 @@ public class RequestedTeamRVAdapter extends RecyclerView.Adapter<RequestedTeamRV
             descriptionTv = (TextView) itemView.findViewById(R.id.text_description_requested_team);
             memberCountTv = (TextView) itemView.findViewById(R.id.text_member_count_requested_team);
             recentUpdateTv = (TextView) itemView.findViewById(R.id.text_recent_update_requested_team);
-            requestButton = (ImageView) itemView.findViewById(R.id.btn_request_requested_team);
             cancelButton = (ImageView) itemView.findViewById(R.id.btn_cancel_requested_team);
-            approveButton = (ImageView) itemView.findViewById(R.id.btn_approved_requested_team);
-            denyButton = (ImageView) itemView.findViewById(R.id.btn_denied_requested_team);
+            approveButton = (ImageView) itemView.findViewById(R.id.btn_approval_requested_team);
+            denyButton = (ImageView) itemView.findViewById(R.id.btn_denial_requested_team);
+            newNotificationIv = (ImageView) itemView.findViewById(R.id.btn_new_notification_requested_team);
 
             // 팀 인원 현황 추후 반영
             String memberNumText = "1 / " + team.getMaxNumber() + "  모집 중";
@@ -94,6 +104,36 @@ public class RequestedTeamRVAdapter extends RecyclerView.Adapter<RequestedTeamRV
             descriptionTv.setText(team.getContent());
             memberCountTv.setText(memberNumText);
             //recentUpdateTv.setText("");
+
+            switch(checkRequestStatus()) {
+                case -1:
+                    cancelButton.setVisibility(View.INVISIBLE);
+                    approveButton.setVisibility(View.INVISIBLE);
+                    denyButton.setVisibility(View.VISIBLE);
+                    newNotificationIv.setVisibility(View.GONE);
+                    break;
+                case 0:
+                    cancelButton.setVisibility(View.VISIBLE);
+                    approveButton.setVisibility(View.INVISIBLE);
+                    denyButton.setVisibility(View.INVISIBLE);
+                    newNotificationIv.setVisibility(View.GONE);
+                    break;
+                case 1:
+                    cancelButton.setVisibility(View.INVISIBLE);
+                    approveButton.setVisibility(View.VISIBLE);
+                    denyButton.setVisibility(View.INVISIBLE);
+                    newNotificationIv.setVisibility(View.VISIBLE);
+                    break;
+            }
+        }
+
+        private int checkRequestStatus() {
+//            if(팀 가입이 승인되었다면)
+//                return 1;
+//            else if(팀 가입이 반려되었다면)
+//                return -1;
+//            else
+                return 1;
         }
     }
 }

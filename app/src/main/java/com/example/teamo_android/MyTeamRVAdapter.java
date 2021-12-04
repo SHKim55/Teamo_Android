@@ -1,13 +1,11 @@
 package com.example.teamo_android;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,9 +14,8 @@ import java.util.ArrayList;
 
 public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeamViewHolder> {
     interface MyTeamItemClickListener {
-        void onItemClick(Team team);
-        void onEditButtonClick(Team team);
-        void onDeleteButtonClick(int index);
+        void onRequestListButtonClick(Team team);
+        void onMenuButtonClick(Team team, int index);
     }
 
     private MyTeamItemClickListener itemClickListener;
@@ -40,31 +37,23 @@ public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeam
     public void onBindViewHolder(@NonNull MyTeamViewHolder viewHolder, int position) {
         viewHolder.bind(myTeamsData.get(position));
 
-        viewHolder.itemView.findViewById(R.id.layout_info_my_team).setOnClickListener(new View.OnClickListener() {
+        // 가입 요청 목록 페이지로 이동
+        viewHolder.itemView.findViewById(R.id.btn_request_list_my_team).setOnClickListener(new View.OnClickListener() {
             int selectedPosition = viewHolder.getBindingAdapterPosition();
 
             @Override
             public void onClick(View view) {
-                itemClickListener.onItemClick(myTeamsData.get(selectedPosition));
+                itemClickListener.onRequestListButtonClick(myTeamsData.get(selectedPosition));
             }
         });
 
-        viewHolder.itemView.findViewById(R.id.btn_edit_my_team).setOnClickListener(new View.OnClickListener() {
+        // 팝업 메뉴
+        viewHolder.itemView.findViewById(R.id.btn_menu_my_team).setOnClickListener(new View.OnClickListener() {
             int selectedPosition = viewHolder.getBindingAdapterPosition();
 
             @Override
             public void onClick(View view) {
-                itemClickListener.onEditButtonClick(myTeamsData.get(selectedPosition));
-            }
-        });
-
-        viewHolder.itemView.findViewById(R.id.btn_delete_my_team).setOnClickListener(new View.OnClickListener() {
-            int selectedPosition = viewHolder.getBindingAdapterPosition();
-
-            @Override
-            public void onClick(View view) {
-                itemClickListener.onDeleteButtonClick(selectedPosition);
-                notifyDataSetChanged();
+                itemClickListener.onMenuButtonClick(myTeamsData.get(selectedPosition), selectedPosition);
             }
         });
     }
@@ -78,7 +67,7 @@ public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeam
 
     public static class MyTeamViewHolder extends RecyclerView.ViewHolder {
         TextView titleTv, descriptionTv, memberCountTv, recentUpdateTv;
-        ImageView editButton, deleteButton;
+        ImageView menuButton, requestListButton;
 
         public MyTeamViewHolder(@NonNull View itemView, MyTeamItemClickListener itemClickListener) {
             super(itemView);
@@ -89,8 +78,8 @@ public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeam
             descriptionTv = (TextView) itemView.findViewById(R.id.text_description_my_team);
             memberCountTv = (TextView) itemView.findViewById(R.id.text_member_count_my_team);
             recentUpdateTv = (TextView) itemView.findViewById(R.id.text_recent_update_my_team);
-            editButton = (ImageView) itemView.findViewById(R.id.btn_edit_my_team);
-            deleteButton = (ImageView) itemView.findViewById(R.id.btn_delete_my_team);
+            menuButton = (ImageView) itemView.findViewById(R.id.btn_menu_my_team);
+            requestListButton = (ImageView) itemView.findViewById(R.id.btn_request_list_my_team);
 
             // 팀 인원 현황 추후 반영
             String memberNumText = "1 / " + team.getMaxNumber() + "  모집 중";

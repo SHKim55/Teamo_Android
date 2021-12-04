@@ -30,6 +30,7 @@ public class RequestedTeamFragment extends Fragment {
 
         requestedTeamRV = (RecyclerView) view.findViewById(R.id.rv_teams_requested_team);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        requestedTeamRV.setLayoutManager(layoutManager);
 
         RequestedTeamRVAdapter adapter = new RequestedTeamRVAdapter(requestedTeamsData);
         requestedTeamRV.setAdapter(adapter);
@@ -39,14 +40,14 @@ public class RequestedTeamFragment extends Fragment {
             public void onItemClick(Team team) {
                 Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getContent());
 
-                Intent intent = new Intent(requireContext(), TeamDetailActivity.class);
-                intent.putExtra("id", team.getTeamId());
-                startActivity(intent);
+
             }
 
             @Override
-            public void onRequestButtonClick(Team team) {
-
+            public void onApprovalButtonClick(Team team) {
+                Intent intent = new Intent(requireContext(), TeamDetailActivity.class);
+                intent.putExtra("team", team);
+                startActivity(intent);
             }
 
             @Override
@@ -56,8 +57,6 @@ public class RequestedTeamFragment extends Fragment {
                 Toast.makeText(getContext(), "삭제되었습니다.", Toast.LENGTH_SHORT);
             }
         });
-
-        requestedTeamRV.setLayoutManager(layoutManager);
 
         return view;
     }

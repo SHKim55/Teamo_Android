@@ -21,14 +21,15 @@
 
         <TextView
             android:id="@+id/text_title_my_team"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginStart="20dp"
             android:text="객체지향프로그래밍 팀플 구함"
             android:textSize="18sp"
             android:textColor="@color/title_dark_green"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/text_description_my_team"
@@ -41,6 +42,17 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@id/text_title_my_team"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_menu_my_team"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/btn_popup_menu"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="@id/text_title_my_team"
+            app:layout_constraintBottom_toBottomOf="@id/text_title_my_team"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/text_member_count_my_team"
@@ -68,28 +80,39 @@
             app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@id/layout_info_my_team"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
         <ImageView
-            android:id="@+id/btn_edit_my_team"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_request_list_my_team"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_myteam_edit"
-            android:scaleType="fitXY" />
+            android:orientation="horizontal"
+            android:background="@drawable/btn_request_list"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-<!--         오른쪽 버튼은 삭제 코드-->
         <ImageView
-            android:id="@+id/btn_delete_my_team"
+            android:id="@+id/btn_new_notification_my_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_join_cancel"
-            android:scaleType="fitXY" />
-    </LinearLayout>
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="80dp"
+            android:background="@drawable/ic_new_notification"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="@id/btn_request_list_my_team"
+            app:layout_constraintBottom_toBottomOf="@id/btn_request_list_my_team"
+            app:layout_constraintStart_toStartOf="@id/btn_request_list_my_team"
+            app:layout_constraintEnd_toEndOf="@id/btn_request_list_my_team"
+            android:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

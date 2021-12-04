@@ -29,7 +29,7 @@ import java.time.Duration;
 import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
-    private ImageView tempBtn2;
+    private ImageView backBtn;
     private EditText idEdit, passwordEdit, nameEdit;
     private Button idCheckBtn, nextBtn;
     private TextView idCondition, passwordCondition, idCheck;
@@ -48,7 +48,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void initElements() {
-        tempBtn2 = (ImageView) findViewById(R.id.img_teamo_signup);
+        backBtn = (ImageView) findViewById(R.id.btn_back_signup);
         idEdit = (EditText) findViewById(R.id.edit_id_signup);
         passwordEdit = (EditText) findViewById(R.id.edit_password_signup);
         nameEdit = (EditText) findViewById(R.id.edit_name_signup);
@@ -64,7 +64,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void initOnClickListeners() {
-        tempBtn2.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
