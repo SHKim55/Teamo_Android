@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +25,8 @@ public class MypageActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     private String token = null;
+    private static SharedPreferences preferences;
+    private static MypageActivity _instance;
 
     public User currentUser;
 
@@ -30,14 +35,12 @@ public class MypageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
+        _instance = this;
         initElements();
         initVP();
     }
 
     private void initElements() {
-        SharedPreferences sharedPreferences = getSharedPreferences("token", MODE_PRIVATE);
-        token = sharedPreferences.getString("token", null);
-
         backButton = (ImageView) findViewById(R.id.btn_back_mypage);
         name = (TextView) findViewById(R.id.text_name_mypage);
         department = (TextView) findViewById(R.id.text_department_mypage);
