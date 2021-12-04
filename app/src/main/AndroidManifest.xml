@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MaterialComponents.NoActionBar"
         tools:targetApi="n">
         <activity
+            android:name=".RequestActivity"
+            android:exported="true" />
+        <activity
             android:name=".CreatePostContentActivity"
             android:exported="false" />
         <activity
@@ -41,11 +44,10 @@
         </activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity" />
-        <activity
-            android:name=".MainActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".EmailConfirmationActivity" />
-        <activity android:name=".CreateTeamActivity"/>
+        <activity android:name=".CreateTeamActivity" />
     </application>
 
 </manifest>
