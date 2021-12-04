@@ -17,4 +17,7 @@
     <color name="theme_mild_yellow">#F2EEE3</color>
     <color name="background_dark_grey">#9BABB2</color>
     <color name="title_dark_green">#7C9194</color>
+    <color name="mild_green">#F4F7F0</color>
+    <color name="trans_white">#80FFFFFF</color>
+    <color name="dark_dark_grey">#A5A2A2</color>
 </resources>

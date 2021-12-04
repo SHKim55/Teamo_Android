@@ -38,7 +38,7 @@ public class RequestedTeamFragment extends Fragment {
         adapter.setItemClickListener(new RequestedTeamRVAdapter.RequestedTeamItemClickListener() {
             @Override
             public void onItemClick(Team team) {
-                Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getContent());
+                Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getTag());
 
 
             }
@@ -64,15 +64,6 @@ public class RequestedTeamFragment extends Fragment {
     private void initTempDB() {
         if (!requestedTeamsData.isEmpty())
             requestedTeamsData.clear();
-
-        requestedTeamsData.add(new Team("2", "백엔드 킹갓이 DB 버스 태워드립니다.", "김재훈", 3,
-                "데이터베이스설계", "2021-2", "강현철", "3"));
-
-        requestedTeamsData.add(new Team("4", "캡디 팀원 구합니다.", "이수민", 6,
-                "캡스톤디자인 I", "2021-2", "김은우", "1"));
-
-        requestedTeamsData.add(new Team("5", "말하는 감자들 환영합니다.", "김선호", 5,
-                "기초컴퓨터프로그래밍", "2021-2", "이창하", "1"));
 
     }
 
