@@ -117,7 +117,6 @@ public class MyTeamFragment extends Fragment {
         return view;
     }
 
-    // 실제 서버에서 해당 데이터를 받아오는 파트
     private void loadData() {
         String myPostingApi = getString(R.string.url) + "/posting/myPostings/host/" + pageNum;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, myPostingApi, null,

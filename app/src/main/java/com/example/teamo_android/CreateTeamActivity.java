@@ -11,11 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
 import com.example.teamo_android.databinding.ActivityCreateTeamBinding;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class CreateTeamActivity extends AppCompatActivity {
     private String subjectName, semesterYear, semesterMonth, professorName, classNumber;
