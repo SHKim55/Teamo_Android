@@ -117,7 +117,7 @@ public class CreatePostContentActivity extends AppCompatActivity {
         try {
             posting.put("title", newTeam.getTitle());
             posting.put("content", newTeam.getTag());
-            posting.put("member_number", newTeam.getMaxNumber());
+            posting.put("member_number", newTeam.getMaxMemberNum());
             posting.put("subject", newTeam.getSubject());
             posting.put("semester", newTeam.getSemester());
             posting.put("professor", newTeam.getProfessor());

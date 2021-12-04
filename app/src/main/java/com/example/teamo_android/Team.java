@@ -40,14 +40,13 @@ public class Team implements Serializable {
 
     public String getTeamId() { return this.id; }
     public String getTitle() { return this.title; }
-    public int getMaxNumber() { return this.maxMemberNum; }
     public String getSubject() { return this.subject; }
     public String getSemester() { return this.semester; }
     public String getProfessor() { return this.professor; }
     public String getCourseClass() { return this.courseClass; }
     public String getTag() { return this.tag; }
     public int getMaxMemberNum() {
-        return maxMemberNum;
+        return this.maxMemberNum;
     }
     public String getDate() {
         return date;
