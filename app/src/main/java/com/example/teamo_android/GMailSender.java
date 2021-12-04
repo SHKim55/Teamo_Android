@@ -15,10 +15,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import javax.mail.Session;
-
 public class GMailSender extends javax.mail.Authenticator {
     private String mailhost = "smtp.gmail.com";
     private String user;

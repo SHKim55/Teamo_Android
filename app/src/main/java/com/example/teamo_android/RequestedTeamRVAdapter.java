@@ -104,7 +104,7 @@ public class RequestedTeamRVAdapter extends RecyclerView.Adapter<RequestedTeamRV
             memberCountTv.setText(memberNumText);
             //recentUpdateTv.setText("");
 
-            switch(checkRequestStatus()) {
+            switch(checkRequestStatus("approved")) {
                 case -1:
                     cancelButton.setVisibility(View.INVISIBLE);
                     approveButton.setVisibility(View.INVISIBLE);
@@ -126,13 +126,13 @@ public class RequestedTeamRVAdapter extends RecyclerView.Adapter<RequestedTeamRV
             }
         }
 
-        private int checkRequestStatus() {
-//            if(팀 가입이 승인되었다면)
-//                return 1;
-//            else if(팀 가입이 반려되었다면)
-//                return -1;
-//            else
+        private int checkRequestStatus(String requestMessage) {
+            if(requestMessage.equals("approved"))
                 return 1;
+            else if(requestMessage.equals("denied"))
+                return -1;
+            else
+                return 0;
         }
     }
 }

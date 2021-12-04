@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "모든 글을 불러왔습니다", Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                Toast.makeText(MainActivity.this, String.valueOf(len), Toast.LENGTH_SHORT).show();
                                 for(int i = 0; i<len; i++) {
                                     JSONObject object = postings.getJSONObject(i);
                                     Team team = new Team(object.get("id").toString(), object.getString("title"), Integer.parseInt(object.getString("member_number")),
@@ -99,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void getMorePost() {
-        Log.i("tag", "이 포스트는 " + pageNum + "번째");
         String postingGetApi = getString(R.string.url) + "/posting/allPostings/" + pageNum;
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -112,13 +110,11 @@ public class MainActivity extends AppCompatActivity {
                                 try {
                                     int len = (int) response.get("number");
                                     JSONArray postings = response.getJSONArray("postings");
-                                    Log.i("postings", postings.toString());
 
                                     if(len == 0) {
                                         Toast.makeText(MainActivity.this, "모든 글을 불러왔습니다", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
-                                        Toast.makeText(MainActivity.this, String.valueOf(len), Toast.LENGTH_SHORT).show();
                                         for(int i = 0; i<len; i++) {
                                             JSONObject object = postings.getJSONObject(i);
                                             Team team = new Team(object.get("id").toString(), object.getString("title"), Integer.parseInt(object.getString("member_number")),
