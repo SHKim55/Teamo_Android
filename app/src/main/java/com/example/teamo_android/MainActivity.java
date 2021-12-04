@@ -1,25 +1,43 @@
 package com.example.teamo_android;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+    private RequestQueue queue;
     private ImageView logoButton, notificationButton, searchButton, createButton, mypageButton;
     private RecyclerView teamsRV;
     private RecyclerView.LayoutManager layoutManager;
-
+    private TeamsRVAdapter adapter;
+    private int pageNum = 0, total = 0;
     private User currentUser;
     private String idText, passwordText;
+    private boolean checkMore = true;
 
     public ArrayList<Team> teamsData = new ArrayList<Team>();
 
@@ -29,9 +47,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getDataFromIntent();
-        initTempDB();
+        //initTempDB();
         initElements();
         initRV();
+        getPostList();
     }
 
     private void getDataFromIntent() {
@@ -40,28 +59,98 @@ public class MainActivity extends AppCompatActivity {
         passwordText = prev_intent.getStringExtra("password");
     }
 
-    // 리사이클러뷰 테스트를 위한 임시 DB 생성
-    private void initTempDB() {
-        if (!teamsData.isEmpty())
-            teamsData.clear();
+    private void getPostList() {
+        String postingGetApi = getString(R.string.url) + "/posting/allPostings/" + pageNum;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, postingGetApi, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            int len = (int) response.get("number");
+                            JSONArray postings = response.getJSONArray("postings");
+                            Log.i("postings", postings.toString());
 
-        teamsData.add(new Team(1, "객지프 팀플 버스 태워드립니다.", "김은솔", 4,
-                "객체지향프로그래밍", "2021-2", "손봉수", "2"));
+                            if(len == 0) {
+                                Toast.makeText(MainActivity.this, "모든 글을 불러왔습니다", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(MainActivity.this, String.valueOf(len), Toast.LENGTH_SHORT).show();
+                                for(int i = 0; i<len; i++) {
+                                    JSONObject object = postings.getJSONObject(i);
+                                    Team team = new Team(object.get("id").toString(), object.getString("title"), null, Integer.parseInt(object.getString("member_number")),
+                                            object.getString("subject"), object.getString("semester"), object.getString("professor"), object.getString("class"));
+                                    teamsData.add(team);
+                                    // if(i == len - 1) pageNum++;
+                                }
+                                total += len;
+                                adapter.notifyItemInserted(teamsData.size() - 1);
+                                pageNum++;
+                            }
+                            if(len != 20) checkMore = false;
+                        } catch(JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, "서버 통신 중 오류가 발생했습니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(request);
+    }
 
-        teamsData.add(new Team(2, "백엔드 킹갓이 DB 버스 태워드립니다.", "김재훈", 3,
-                "데이터베이스설계", "2021-2", "강현철", "3"));
+    void getMorePost() {
+        Log.i("tag", "이 포스트는 " + pageNum + "번째");
+        String postingGetApi = getString(R.string.url) + "/posting/allPostings/" + pageNum;
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, postingGetApi, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    int len = (int) response.get("number");
+                                    JSONArray postings = response.getJSONArray("postings");
+                                    Log.i("postings", postings.toString());
 
-        teamsData.add(new Team(3, "방탈출 같이 하실 분?", "김은솔", 4,
-                "프로그래밍", "2021-2", "조용진", "2"));
+                                    if(len == 0) {
+                                        Toast.makeText(MainActivity.this, "모든 글을 불러왔습니다", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else {
+                                        Toast.makeText(MainActivity.this, String.valueOf(len), Toast.LENGTH_SHORT).show();
+                                        for(int i = 0; i<len; i++) {
+                                            JSONObject object = postings.getJSONObject(i);
+                                            Team team = new Team(object.get("id").toString(), object.getString("title"), null, Integer.parseInt(object.getString("member_number")),
+                                                    object.getString("subject"), object.getString("semester"), object.getString("professor"), object.getString("class"));
+                                            teamsData.add(team);
+                                            // if(i == len - 1) pageNum++;
+                                        }
+                                        total += len;
+                                        adapter.notifyItemInserted(teamsData.size() - 1);
+                                        pageNum++;
+                                    }
+                                    if(len != 20) checkMore = false;
+                                } catch(JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this, "서버 통신 중 오류가 발생했습니다", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                queue.add(request);
+            }
+        }, 500);
 
-        teamsData.add(new Team(4, "캡디 팀원 구합니다.", "이수민", 6,
-                "캡스톤디자인 I", "2021-2", "김은우", "1"));
-
-        teamsData.add(new Team(5, "말하는 감자들 환영합니다.", "김선호", 5,
-                "기초컴퓨터프로그래밍", "2021-2", "이창하", "1"));
     }
 
     private void initElements() {
+        queue = Volley.newRequestQueue(MainActivity.this);
         logoButton = (ImageView) findViewById(R.id.img_teamo_main);
         notificationButton = (ImageView) findViewById(R.id.btn_notification_main);
         searchButton = (ImageView) findViewById(R.id.btn_search_main);
@@ -113,9 +202,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void initRV() {
         teamsRV = (RecyclerView) findViewById(R.id.rv_teams_main);
+
+        teamsRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int position = ((LinearLayoutManager) Objects.requireNonNull(recyclerView.getLayoutManager())).findLastCompletelyVisibleItemPosition();
+                Log.i("size", String.valueOf(teamsData.size()-1));
+                if(position == teamsData.size()-1 && checkMore) {
+                    getMorePost();
+                }
+            }
+        });
+
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
-        TeamsRVAdapter adapter = new TeamsRVAdapter(teamsData);
+        adapter = new TeamsRVAdapter(teamsData);
         teamsRV.setAdapter(adapter);
 
         adapter.setItemClickListener(new TeamsRVAdapter.TeamsItemClickListener() {

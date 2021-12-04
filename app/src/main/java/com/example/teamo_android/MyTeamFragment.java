@@ -68,10 +68,10 @@ public class MyTeamFragment extends Fragment {
         if (!myTeamsData.isEmpty())
             myTeamsData.clear();
 
-        myTeamsData.add(new Team(1, "객지프 팀플 버스 태워드립니다.", "김은솔", 4,
+        myTeamsData.add(new Team("1", "객지프 팀플 버스 태워드립니다.", "김은솔", 4,
                 "객체지향프로그래밍", "2021-2", "손봉수", "2"));
 
-        myTeamsData.add(new Team(3, "방탈출 같이 하실 분?", "김은솔", 4,
+        myTeamsData.add(new Team("3", "방탈출 같이 하실 분?", "김은솔", 4,
                 "프로그래밍", "2021-2", "조용진", "2"));
     }
 
