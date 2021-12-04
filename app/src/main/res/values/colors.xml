@@ -20,4 +20,7 @@
     <color name="mild_green">#F4F7F0</color>
     <color name="trans_white">#80FFFFFF</color>
     <color name="dark_dark_grey">#A5A2A2</color>
+    <color name="indicator_green">#79FD6F</color>
+    <color name="indicator_red">#F95B5B</color>
+    <color name="indicator_grey">#A5A2A2</color>
 </resources>
