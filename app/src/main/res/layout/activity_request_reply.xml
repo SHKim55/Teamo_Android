@@ -6,7 +6,7 @@
     android:layout_height="400dp"
     android:layout_gravity="center"
     android:background="@color/mild_green"
-    tools:context=".RequestReply"
+    tools:context=".RequestReplyActivity"
     tools:layout_editor_absoluteX="-4dp"
     tools:layout_editor_absoluteY="0dp">
 

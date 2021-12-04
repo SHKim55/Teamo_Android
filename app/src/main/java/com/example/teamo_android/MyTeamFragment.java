@@ -72,7 +72,6 @@ public class MyTeamFragment extends Fragment {
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 int position = ((LinearLayoutManager) Objects.requireNonNull(recyclerView.getLayoutManager())).findLastCompletelyVisibleItemPosition();
-                Log.i("size", String.valueOf(myTeamsData.size()-1));
                 if(position == myTeamsData.size()-1 && checkMore) {
                     getMorePost();
                 }
@@ -85,7 +84,7 @@ public class MyTeamFragment extends Fragment {
             public void onRequestListButtonClick(Team team) {
                 Log.d("선택된 팀 정보", team.getTeamId() + " " + team.getTag());
 
-                Intent intent = new Intent(requireContext(), TeamDetailActivity.class);
+                Intent intent = new Intent(requireContext(), RequestListActivity.class);
                 intent.putExtra("id", team.getTeamId());
                 startActivity(intent);
             }
@@ -115,15 +114,11 @@ public class MyTeamFragment extends Fragment {
                 popupMenu.show();
             }
         });
-
-
         return view;
     }
 
     // 실제 서버에서 해당 데이터를 받아오는 파트
     private void loadData() {
-
-        Log.i("token", token);
         String myPostingApi = getString(R.string.url) + "/posting/myPostings/host/" + pageNum;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, myPostingApi, null,
                 new Response.Listener<JSONObject>() {
@@ -132,13 +127,11 @@ public class MyTeamFragment extends Fragment {
                         try {
                             int len = (int) response.get("number");
                             JSONArray postings = response.getJSONArray("postings");
-                            Log.i("postings", postings.toString());
 
                             if(len == 0) {
                                 Toast.makeText(getContext(), "모든 글을 불러왔습니다", Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                Toast.makeText(getContext(), String.valueOf(len), Toast.LENGTH_SHORT).show();
                                 for(int i = 0; i<len; i++) {
                                     JSONObject object = postings.getJSONObject(i);
                                     Team team = new Team(object.get("id").toString(), object.getString("title"), Integer.parseInt(object.getString("member_number")),
@@ -172,7 +165,6 @@ public class MyTeamFragment extends Fragment {
     }
 
     private void getMorePost() {
-        Log.i("tag", "이 포스트는 " + pageNum + "번째");
         String postingGetApi = getString(R.string.url) + "/posting/allPostings/" + pageNum;
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -191,7 +183,6 @@ public class MyTeamFragment extends Fragment {
                                         Toast.makeText(getContext(), "모든 글을 불러왔습니다", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
-                                        Toast.makeText(getContext(), String.valueOf(len), Toast.LENGTH_SHORT).show();
                                         for(int i = 0; i<len; i++) {
                                             JSONObject object = postings.getJSONObject(i);
                                             Team team = new Team(object.get("id").toString(), object.getString("title"), Integer.parseInt(object.getString("member_number")),
