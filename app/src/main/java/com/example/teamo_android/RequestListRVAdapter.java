@@ -13,14 +13,14 @@ import java.util.ArrayList;
 
 public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdapter.RequestListViewHolder> {
     interface RequestListItemClickListener {
-        void onItemClick(User user);
+        void onItemClick(Member member);
         void onApprovalButtonClick();
     }
 
     private RequestListRVAdapter.RequestListItemClickListener itemClickListener;
-    private ArrayList<User> requestListData;
+    private ArrayList<Member> requestListData;
 
-    public RequestListRVAdapter(ArrayList<User> data) { this.requestListData = data; }
+    public RequestListRVAdapter(ArrayList<Member> data) { this.requestListData = data; }
 
     @NonNull
     @Override
@@ -70,7 +70,7 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
             super(itemView);
         }
 
-        public void bind(User user) {
+        public void bind(Member member) {
             nameTv = (TextView) itemView.findViewById(R.id.text_name_request_list);
             departmentTv = (TextView) itemView.findViewById(R.id.text_department_request_list);
             studentNumTv = (TextView) itemView.findViewById(R.id.text_student_num_request_list);
@@ -80,11 +80,11 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
             denyTv = (TextView) itemView.findViewById(R.id.text_denial_request_list);
             waitTv = (TextView) itemView.findViewById(R.id.text_waiting_request_list);
 
-            nameTv.setText(user.getUserName());
-            departmentTv.setText(user.getDepartment());
-            studentNumTv.setText(user.getStudentNum());
+            nameTv.setText(member.getName());
+            departmentTv.setText(member.getDepartment());
+            studentNumTv.setText(member.getStdNum());
 
-            switch(checkRequestStatus("approved")) {
+            switch(checkRequestStatus(member.getState())) {
                 case -1:
                     waitTv.setVisibility(View.INVISIBLE);
                     approveTv.setVisibility(View.INVISIBLE);
@@ -104,9 +104,9 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
         }
 
         private int checkRequestStatus(String requestMessage) {
-            if(requestMessage.equals("approved"))
+            if(requestMessage.equals("approve"))
                 return 1;
-            else if(requestMessage.equals("denied"))
+            else if(requestMessage.equals("reject"))
                 return -1;
             else
                 return 0;

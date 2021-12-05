@@ -49,7 +49,6 @@
             android:maxLines="2"
             android:textSize="13sp"
             android:textColor="@color/black"
-            android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_title_requested_team" />
 

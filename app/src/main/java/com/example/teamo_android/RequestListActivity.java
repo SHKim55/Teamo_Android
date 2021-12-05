@@ -2,13 +2,23 @@ package com.example.teamo_android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -18,11 +28,12 @@ public class RequestListActivity extends AppCompatActivity {
     private RequestListRVAdapter adapter;
     private RequestQueue queue;
     private int pageNum = 0, total = 0;
-    public ArrayList<User> requestUsersData = new ArrayList<User>();
+    public ArrayList<Member> requestUsersData = new ArrayList<Member>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_request_list);
 
         queue = Volley.newRequestQueue(this);
         requestListRV = (RecyclerView) findViewById(R.id.rv_requests_request_list);
@@ -31,11 +42,9 @@ public class RequestListActivity extends AppCompatActivity {
         adapter = new RequestListRVAdapter(requestUsersData);
         requestListRV.setAdapter(adapter);
 
-        loadData();
-
         adapter.setItemClickListener(new RequestListRVAdapter.RequestListItemClickListener() {
             @Override
-            public void onItemClick(User user) {
+            public void onItemClick(Member member) {
                 Intent intent = new Intent(RequestListActivity.this, RequestedMessageActivity.class);
                 startActivity(intent);
             }
@@ -46,9 +55,36 @@ public class RequestListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        loadData();
     }
 
     private void loadData() {
+        Intent intent = getIntent();
+        String teamId = intent.getStringExtra("id");
+        String requestedListApi = getString(R.string.url) + "/team/member/" + teamId;
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, requestedListApi, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            for(int i = 0; i<response.length(); i++) {
+                                JSONObject object = response.getJSONObject(i);
+                                Member member = new Member(teamId, object.getString("name"), object.getString("department"), object.getString("std_num"),
+                                        object.getString("state"), object.getString("memberId"));
+                                requestUsersData.add(member);
+                            }
+                            adapter.notifyItemInserted(requestUsersData.size() - 1);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        queue.add(request);
     }
 }

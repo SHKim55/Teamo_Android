@@ -14,17 +14,11 @@ public class RequestedMessageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        TextView txtText;
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requested_message);
-        //타이틀바 없애기
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_requested_message);
 
-        //UI 객체생성
-        //txtText = (TextView)findViewById(R.id.txtText);
 
         //데이터 가져오기
         Intent intent = getIntent();
@@ -34,12 +28,6 @@ public class RequestedMessageActivity extends AppCompatActivity {
 
     //확인 버튼 클릭
     public void mOnClose(View v){
-        //데이터 전달하기
-        Intent intent = new Intent();
-        intent.putExtra("result", "Close Popup");
-        setResult(RESULT_OK, intent);
-
-        //액티비티(팝업) 닫기
         finish();
     }
 

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Teamo_Android</string>
     <string name="text_register"><u>새 계정 만들기</u></string>
-    <string name="url">http://4ebd-211-58-35-178.ngrok.io</string>
+    <string name="url">http://40c3-211-58-35-178.ngrok.io</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
