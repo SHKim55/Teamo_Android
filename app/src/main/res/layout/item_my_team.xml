@@ -23,25 +23,27 @@
             android:id="@+id/text_title_my_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/nanumsquareroundb"
             android:text="객체지향프로그래밍 팀플 구함"
-            android:textSize="18sp"
             android:textColor="@color/title_dark_green"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_description_my_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanumsquareroundr"
             android:text="발표는 내가 할게. 개발은 누가 할래?"
-            android:textSize="13sp"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/text_title_my_team"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_title_my_team" />
 
         <ImageView
             android:id="@+id/btn_menu_my_team"
@@ -58,26 +60,28 @@
             android:id="@+id/text_member_count_my_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/nanumsquareroundr"
             android:text="1/4 모집 중"
-            android:textSize="10sp"
             android:textColor="@color/theme_grey"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/text_recent_update_my_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:layout_marginEnd="20dp"
             android:layout_gravity="right"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/nanumsquareroundr"
             android:text="3시간 전"
-            android:textSize="10sp"
             android:textColor="@color/theme_grey"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

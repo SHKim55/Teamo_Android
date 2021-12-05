@@ -40,6 +40,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
+        android:fontFamily="@font/nanumsquareroundr"
         app:layout_constraintTop_toBottomOf="@id/img_teamo_signup"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -58,6 +59,7 @@
         android:textStyle="bold"
         android:letterSpacing="0.1"
         android:textAllCaps="false"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toTopOf="@id/edit_id_signup"
         app:layout_constraintBottom_toBottomOf="@id/edit_id_signup"
         app:layout_constraintStart_toEndOf="@id/edit_id_signup"
@@ -71,6 +73,7 @@
         android:text="사용 가능한 아이디입니다."
         android:textSize="10sp"
         android:textColor="@color/theme_pink"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toBottomOf="@id/text_id_condition_signup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +87,7 @@
         android:text="아이디는 영문, 숫자 포함 5자리 이상입니다."
         android:textSize="10sp"
         android:textColor="@color/theme_pink"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toBottomOf="@id/edit_id_signup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,6 +105,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
+        android:fontFamily="@font/nanumsquareroundr"
         app:layout_constraintTop_toBottomOf="@id/edit_id_signup"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -112,6 +117,7 @@
         android:text="비밀번호는 영문, 숫자 포함 7자리 이상입니다."
         android:textSize="10sp"
         android:textColor="@color/theme_pink"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toBottomOf="@id/edit_password_signup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,6 +135,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
+        android:fontFamily="@font/nanumsquareroundr"
         app:layout_constraintTop_toBottomOf="@id/edit_password_signup"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -175,6 +182,7 @@
         android:textColor="@color/white"
         android:letterSpacing="0.1"
         android:textAllCaps="false"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

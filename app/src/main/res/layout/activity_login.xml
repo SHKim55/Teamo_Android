@@ -17,6 +17,7 @@
         android:textColor="@color/title_dark_green"
         android:textStyle="bold"
         android:textAlignment="center"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -30,6 +31,7 @@
         android:textSize="15sp"
         android:textColor="@color/title_dark_green"
         android:textStyle="bold"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toBottomOf="@id/text_title_login"
         app:layout_constraintStart_toStartOf="@id/text_title_login"/>
 
@@ -40,9 +42,10 @@
         android:layout_marginStart="12dp"
         android:text="원을"
         android:textSize="15sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:letterSpacing="1"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toTopOf="@id/text_description_1_login"
         app:layout_constraintStart_toEndOf="@id/text_description_1_login" />
 
@@ -55,6 +58,7 @@
         android:textSize="15sp"
         android:textColor="@color/theme_grey"
         android:textStyle="bold"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toTopOf="@id/text_description_1_login"
         app:layout_constraintEnd_toStartOf="@id/text_description_4_login" />
 
@@ -65,9 +69,10 @@
         android:layout_marginStart="12dp"
         android:text="으다"
         android:textSize="15sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:letterSpacing="1"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintTop_toTopOf="@id/text_description_1_login"
         app:layout_constraintEnd_toEndOf="@id/text_title_login" />
 
@@ -95,6 +100,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
+        android:fontFamily="@font/nanumsquareroundr"
         app:layout_constraintTop_toBottomOf="@id/img_teamo_login"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -111,37 +117,41 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
+        android:fontFamily="@font/nanumsquareroundr"
         app:layout_constraintTop_toBottomOf="@id/edit_id_login"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/text_newbee_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginBottom="70dp"
-        android:text="티모가 처음이신가요?"
-        android:textSize="13sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:layout_marginBottom="108dp"
+        android:fontFamily="@font/nanumsquareroundr"
         android:letterSpacing="0.2"
+        android:text="티모가 처음이신가요?"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_signup_login"/>
+        app:layout_constraintEnd_toStartOf="@id/btn_signup_login"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/btn_signup_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="70dp"
-        android:text="@string/text_register"
-        android:textSize="13sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="108dp"
+        android:fontFamily="@font/nanumsquareroundb"
         android:letterSpacing="0.1"
+        android:text="@string/text_register"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/text_newbee_login"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
@@ -156,6 +166,7 @@
         android:textColor="@color/white"
         android:letterSpacing="0.1"
         android:textAllCaps="false"
+        android:fontFamily="@font/nanumsquareroundb"
         app:layout_constraintBottom_toTopOf="@id/btn_signup_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
