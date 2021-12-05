@@ -9,7 +9,6 @@
         android:background="@color/mild_green"
         tools:context=".RequestActivity">
 
-
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
@@ -32,7 +31,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/btn_exit" />
-
         <TextView
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
@@ -80,6 +78,8 @@
             android:layout_width="250dp"
             android:layout_height="180dp"
             android:text=""
+            android:hint="내용을 입력해주세요."
+            android:textColorHint="@color/dark_grey"
             android:textColor="@color/black"
             android:padding="10dp"
             android:gravity="start"
