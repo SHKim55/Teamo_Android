@@ -24,7 +24,7 @@
       app:layout_constraintTop_toTopOf="parent" />
 
   <ImageView
-      android:id="@+id/exit_btn"
+      android:id="@+id/receiver_exit_btn"
       android:layout_width="25dp"
       android:layout_height="22dp"
       android:layout_marginTop="28dp"
@@ -69,19 +69,23 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/constraintLayout3"
+  <EditText
+      android:id="@+id/receiver_edit"
       android:layout_width="250dp"
       android:layout_height="180dp"
-      android:layout_gravity="center_horizontal"
-      android:layout_marginBottom="24dp"
+      android:text=""
+      android:background="@null"
+      android:textColor="@color/black"
+      android:padding="10dp"
+      android:gravity="start"
+      android:textSize="16sp"
+      android:fontFamily="@font/nanumsquareroundr"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.51"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textView5"
-      app:layout_constraintVertical_bias="0.155">
-
-  </androidx.constraintlayout.widget.ConstraintLayout>
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.755" />
 
   <ImageView
       android:id="@+id/send_btn"
@@ -92,7 +96,7 @@
       android:layout_marginBottom="28dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+      app:layout_constraintTop_toBottomOf="@+id/receiver_edit"
       app:layout_constraintVertical_bias="1.0"
       app:srcCompat="@drawable/btn_send" />
 
