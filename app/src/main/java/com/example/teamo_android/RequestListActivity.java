@@ -2,12 +2,6 @@ package com.example.teamo_android;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,8 +18,6 @@ public class RequestListActivity extends AppCompatActivity {
     private RequestListRVAdapter adapter;
     private RequestQueue queue;
     private int pageNum = 0, total = 0;
-    public ArrayList<User> usersData = new ArrayList<User>();
-
     public ArrayList<User> requestUsersData = new ArrayList<User>();
 
     @Override
@@ -54,7 +46,6 @@ public class RequestListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     private void loadData() {

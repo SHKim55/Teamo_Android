@@ -39,8 +39,10 @@ public class TeamDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // 신청 팝업
-//                Intent intent = new Intent(TeamDetailActivity.this, RequestActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(TeamDetailActivity.this, RequestActivity.class);
+                intent.putExtra("writer_id", team.getWriterId());
+                intent.putExtra("team_id", team.getTeamId());
+                startActivity(intent);
             }
         });
 
@@ -93,7 +95,6 @@ public class TeamDetailActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "서버 통신 시 오류가 발생했습니다", Toast.LENGTH_SHORT).show();
             }
         });
         queue.add(request);
