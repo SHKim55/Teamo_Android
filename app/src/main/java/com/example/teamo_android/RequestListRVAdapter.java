@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdapter.RequestListViewHolder> {
     interface RequestListItemClickListener {
         void onItemClick(Member member);
-        void onApprovalButtonClick();
+        void onApprovalButtonClick(Member member);
     }
 
     private RequestListRVAdapter.RequestListItemClickListener itemClickListener;
@@ -50,7 +50,7 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
 
             @Override
             public void onClick(View view) {
-                itemClickListener.onApprovalButtonClick();
+                itemClickListener.onApprovalButtonClick(requestListData.get(selectedPosition));
             }
         });
     }

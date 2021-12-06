@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MaterialComponents.NoActionBar"
         tools:targetApi="n">
         <activity
+            android:name=".RequestedReplyActivity"
+            android:exported="false" />
+        <activity
             android:name=".RequestActivity"
             android:exported="true" />
         <activity
@@ -29,10 +32,10 @@
             android:exported="true" />
         <activity
             android:name=".MypageActivity"
+            android:exported="true"
             android:label="@string/app_name"
             android:largeHeap="true"
-            android:supportsRtl="true"
-            android:exported="true" />
+            android:supportsRtl="true" />
         <activity
             android:name=".SearchActivity"
             android:exported="true" />
@@ -51,9 +54,9 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".EmailConfirmationActivity" />
         <activity android:name=".CreateTeamActivity" />
-        <activity android:name=".RequestReplyActivity"/>
-        <activity android:name=".RequestedMessageActivity"/>
-        <activity android:name=".RequestListActivity"/>
+        <activity android:name=".RequestReplyActivity" />
+        <activity android:name=".RequestedMessageActivity" />
+        <activity android:name=".RequestListActivity" />
     </application>
 
 </manifest>

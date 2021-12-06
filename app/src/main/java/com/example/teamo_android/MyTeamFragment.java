@@ -79,6 +79,7 @@ public class MyTeamFragment extends Fragment {
         });
 
         loadData();
+
         adapter.setItemClickListener(new MyTeamRVAdapter.MyTeamItemClickListener() {
             @Override
             public void onRequestListButtonClick(Team team) {
