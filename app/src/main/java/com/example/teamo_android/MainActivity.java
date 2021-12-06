@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -29,7 +30,8 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private RequestQueue queue;
-    private ImageView logoButton, notificationButton, searchButton, createButton, mypageButton;
+    private ImageView logoButton, createButton, mypageButton;
+    private TextView logoutButton;
     private RecyclerView teamsRV;
     private RecyclerView.LayoutManager layoutManager;
     private TeamsRVAdapter adapter;
@@ -148,10 +150,9 @@ public class MainActivity extends AppCompatActivity {
     private void initElements() {
         queue = Volley.newRequestQueue(MainActivity.this);
         logoButton = (ImageView) findViewById(R.id.img_teamo_main);
-        notificationButton = (ImageView) findViewById(R.id.btn_notification_main);
-        searchButton = (ImageView) findViewById(R.id.btn_search_main);
         createButton = (ImageView) findViewById(R.id.btn_create_main);
         mypageButton = (ImageView) findViewById(R.id.btn_mypage_main);
+        logoutButton = (TextView) findViewById(R.id.text_logout_main);
 
         logoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,20 +162,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        notificationButton.setOnClickListener(new View.OnClickListener() {
+        logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "알림 설정 기능은 추후 추가될 예정입니다.", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
-//                finish();
-//                startActivity(intent);
-            }
-        });
-
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
