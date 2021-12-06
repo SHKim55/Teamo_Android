@@ -53,7 +53,7 @@ public class RequestedMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    sendResponseToServer("approve");
+                    sendResponseToServer("approval");
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(), "서버 통신 중 오류가 발생했습니다", Toast.LENGTH_SHORT).show();
                 }

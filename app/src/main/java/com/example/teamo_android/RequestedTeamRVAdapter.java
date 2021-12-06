@@ -1,6 +1,7 @@
 package com.example.teamo_android;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,12 @@ public class RequestedTeamRVAdapter extends RecyclerView.Adapter<RequestedTeamRV
 
     private RequestedTeamItemClickListener itemClickListener;
     private ArrayList<Team> requestedTeamsData;
+    private Context mContext;
 
-    public RequestedTeamRVAdapter(ArrayList<Team> data) { this.requestedTeamsData = data; }
+    public RequestedTeamRVAdapter(ArrayList<Team> data, String token) {
+        this.requestedTeamsData = data;
+
+    }
 
     @NonNull
     @Override

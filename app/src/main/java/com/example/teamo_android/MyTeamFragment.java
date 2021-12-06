@@ -113,6 +113,13 @@ public class MyTeamFragment extends Fragment {
                 });
                 popupMenu.show();
             }
+
+            @Override
+            public void onTeamDetailClick(Team team) {
+                Intent intent = new Intent(getContext(), TeamDetailActivity.class);
+                intent.putExtra("team", team);
+                startActivity(intent);
+            }
         });
         return view;
     }

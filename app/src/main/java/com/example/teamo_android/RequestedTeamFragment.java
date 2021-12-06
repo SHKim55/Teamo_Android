@@ -50,13 +50,14 @@ public class RequestedTeamFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_requested_team, container, false);
         queue = Volley.newRequestQueue(requireContext());
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("token", MODE_PRIVATE);
+        token = sharedPreferences.getString("Authorization", "");
         requestedTeamRV = (RecyclerView) view.findViewById(R.id.rv_teams_requested_team);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         requestedTeamRV.setLayoutManager(layoutManager);
-        adapter = new RequestedTeamRVAdapter(requestedTeamsData);
+        adapter = new RequestedTeamRVAdapter(requestedTeamsData, token);
         requestedTeamRV.setAdapter(adapter);
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("token", MODE_PRIVATE);
-        token = sharedPreferences.getString("Authorization", "");
+
 
         requestedTeamRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
