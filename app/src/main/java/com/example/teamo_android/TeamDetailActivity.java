@@ -61,7 +61,6 @@ public class TeamDetailActivity extends AppCompatActivity {
         team = (Team) prev_intent.getSerializableExtra("team");
         binding = DataBindingUtil.setContentView(this, R.layout.activity_team_detail);
         queue = Volley.newRequestQueue(getApplicationContext());
-        //String semester = team.getSemester().par
         String maxMemberNumber = "모집 인원 : " + String.valueOf(team.getMaxMemberNum());
         binding.postingTitle.setText(team.getTitle());
         binding.postingDate.setText(team.getDate().substring(0, 10));

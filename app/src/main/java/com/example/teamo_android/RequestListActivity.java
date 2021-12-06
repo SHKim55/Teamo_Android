@@ -28,6 +28,7 @@ public class RequestListActivity extends AppCompatActivity {
     private RequestListRVAdapter adapter;
     private RequestQueue queue;
     private int pageNum = 0, total = 0;
+    private boolean checkAgain = false;
     public ArrayList<Member> requestUsersData = new ArrayList<Member>();
 
     @Override
@@ -52,8 +53,11 @@ public class RequestListActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onApprovalButtonClick() {
+            public void onApprovalButtonClick(Member member) {
                 Intent intent = new Intent(RequestListActivity.this, RequestReplyActivity.class);
+                intent.putExtra("team_id", member.getTeamId());
+                intent.putExtra("sender_id", member.getMemberId());
+                checkAgain = true;
                 startActivity(intent);
             }
         });
@@ -66,9 +70,11 @@ public class RequestListActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        int prevSize = requestUsersData.size();
-        requestUsersData.clear();
-        adapter.notifyItemRangeRemoved(0,prevSize);
+        if(checkAgain) {
+            int prevSize = requestUsersData.size();
+            requestUsersData.clear();
+            adapter.notifyItemRangeRemoved(0,prevSize);
+        }
         Intent intent = getIntent();
         String teamId = intent.getStringExtra("id");
         String requestedListApi = getString(R.string.url) + "/team/member/" + teamId;

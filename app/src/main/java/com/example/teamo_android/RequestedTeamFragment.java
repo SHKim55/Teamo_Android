@@ -55,7 +55,7 @@ public class RequestedTeamFragment extends Fragment {
         requestedTeamRV = (RecyclerView) view.findViewById(R.id.rv_teams_requested_team);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         requestedTeamRV.setLayoutManager(layoutManager);
-        adapter = new RequestedTeamRVAdapter(requestedTeamsData, token);
+        adapter = new RequestedTeamRVAdapter(requestedTeamsData, getActivity().getApplicationContext(), token);
         requestedTeamRV.setAdapter(adapter);
 
 
@@ -86,15 +86,9 @@ public class RequestedTeamFragment extends Fragment {
 
             @Override
             public void onApprovalButtonClick(Team team) {
-                Intent intent = new Intent(requireContext(), TeamDetailActivity.class);
+                Intent intent = new Intent(requireContext(), RequestedReplyActivity.class);
                 intent.putExtra("team", team);
                 startActivity(intent);
-            }
-
-            @Override
-            public void onCancelButtonClick(int index) {
-                requestedTeamsData.remove(index);
-                Toast.makeText(getContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -103,7 +97,6 @@ public class RequestedTeamFragment extends Fragment {
         return view;
     }
 
-    // 실제 서버에서 해당 데이터를 받아오는 파트
     // 실제 서버에서 해당 데이터를 받아오는 파트
     private void loadData() {
         String myPostingApi = getString(R.string.url) + "/posting/myPostings/member/" + pageNum;

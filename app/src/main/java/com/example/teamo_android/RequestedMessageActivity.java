@@ -45,7 +45,6 @@ public class RequestedMessageActivity extends AppCompatActivity {
     private void initElements() {
         SharedPreferences preferences = getSharedPreferences("token", MODE_PRIVATE);
         token = preferences.getString("Authorization", "");
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_requested_message);
         queue = Volley.newRequestQueue(getApplicationContext());
 

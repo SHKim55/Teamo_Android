@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:background="@color/mild_green"
+        tools:context=".RequestedReplyActivity"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="조장의 답장"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:fontFamily="@font/nanumsquareroundb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/receiver_exit_btn"
+            android:layout_width="25dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_exit" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="76dp"
+            android:text="보내는 사람"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:fontFamily="@font/nanumsquareroundr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/reply_writer_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textColor="@color/dark_grey"
+            android:textSize="15sp"
+            android:fontFamily="@font/nanumsquareroundr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:text="안내 글"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:fontFamily="@font/nanumsquareroundr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/reply_text"
+            android:layout_width="250dp"
+            android:layout_height="180dp"
+            android:background="@color/white"
+            android:fontFamily="@font/nanumsquareroundr"
+            android:gravity="start"
+            android:hint=""
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="#7C9194"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.718" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
