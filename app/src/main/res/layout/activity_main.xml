@@ -20,7 +20,6 @@
             android:id="@+id/text_title_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:letterSpacing="0.2"
             android:text="TEAMO"
             android:textColor="@color/title_dark_green"
@@ -32,29 +31,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/img_teamo_main"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="20dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_teamo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/btn_notification_main"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
+        <TextView
+            android:id="@+id/text_logout_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_main_notification"
+            android:text="로그아웃"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:fontFamily="@font/nanumsquareroundr"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
@@ -119,20 +108,21 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/btn_search_main"
+            android:id="@+id/btn_create_main"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="30dp"
-            android:background="@drawable/ic_main_search"
+            android:background="@drawable/ic_main_newproject"
             app:layout_constraintBottom_toBottomOf="@id/layout_bottom_bar_main"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/layout_bottom_bar_main" />
 
         <ImageView
-            android:id="@+id/btn_create_main"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@drawable/ic_main_newproject"
+            android:id="@+id/img_teamo_main"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_teamo"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="@id/layout_bottom_bar_main"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
