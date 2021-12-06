@@ -46,6 +46,8 @@ public class RequestListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Member member) {
                 Intent intent = new Intent(RequestListActivity.this, RequestedMessageActivity.class);
+                intent.putExtra("team_id", member.getTeamId());
+                intent.putExtra("member_id", member.getMemberId());
                 startActivity(intent);
             }
 
@@ -55,11 +57,17 @@ public class RequestListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         loadData();
     }
 
     private void loadData() {
+        requestUsersData.clear();
+        adapter.notifyItemRangeRemoved(0, requestUsersData.size() - 1);
         Intent intent = getIntent();
         String teamId = intent.getStringExtra("id");
         String requestedListApi = getString(R.string.url) + "/team/member/" + teamId;
