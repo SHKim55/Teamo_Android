@@ -66,8 +66,9 @@ public class RequestListActivity extends AppCompatActivity {
     }
 
     private void loadData() {
+        int prevSize = requestUsersData.size();
         requestUsersData.clear();
-        adapter.notifyItemRangeRemoved(0, requestUsersData.size() - 1);
+        adapter.notifyItemRangeRemoved(0,prevSize);
         Intent intent = getIntent();
         String teamId = intent.getStringExtra("id");
         String requestedListApi = getString(R.string.url) + "/team/member/" + teamId;

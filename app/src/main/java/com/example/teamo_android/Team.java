@@ -33,7 +33,7 @@ public class Team implements Serializable {
     }
 
     public String makeContent() {
-        String tags = ("#" + this.subject + " #" + this.semester + "학기" + "\n#" + this.professor + "교수님 " +
+        String tags = ("#" + this.subject + " #" + this.semester.substring(0, 4) + "년 " + this.semester.substring(5, 6) + "학기" + "\n#" + this.professor + "교수님 " +
                 "#" + this.courseClass + "분반");
         return tags;
     }

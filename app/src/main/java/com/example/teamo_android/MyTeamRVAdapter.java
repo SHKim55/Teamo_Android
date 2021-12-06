@@ -16,6 +16,7 @@ public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeam
     interface MyTeamItemClickListener {
         void onRequestListButtonClick(Team team);
         void onMenuButtonClick(Team team, int index);
+        void onTeamDetailClick(Team team);
     }
 
     private MyTeamItemClickListener itemClickListener;
@@ -54,6 +55,13 @@ public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeam
             @Override
             public void onClick(View view) {
                 itemClickListener.onMenuButtonClick(myTeamsData.get(selectedPosition), selectedPosition);
+            }
+        });
+
+        viewHolder.itemView.findViewById(R.id.layout_info_my_team).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemClickListener.onTeamDetailClick(myTeamsData.get(viewHolder.getBindingAdapterPosition()));
             }
         });
     }

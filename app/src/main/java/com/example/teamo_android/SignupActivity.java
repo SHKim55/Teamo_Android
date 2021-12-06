@@ -11,6 +11,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,6 +39,8 @@ public class SignupActivity extends AppCompatActivity {
     private String idText, passwordText, nameText, deptNameText, admissionYearText;
     private Boolean checkId = false, checkValidId = false, checkPassword = false, checkName = false, checkDeptName = false, checkAdmissionYear = false;
     public RequestQueue queue;
+    private ArrayAdapter deptAdapter, admissionAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,12 @@ public class SignupActivity extends AppCompatActivity {
         deptNameSpin = (Spinner) findViewById(R.id.spin_dept_name_signup);
         admissionYearSpin = (Spinner) findViewById(R.id.spin_admission_year_signup);
 
+        deptAdapter = ArrayAdapter.createFromResource(this, R.array.dept_name, R.layout.spinner_item);
+        deptAdapter.setDropDownViewResource(R.layout.spinner_item);
+        admissionAdapter = ArrayAdapter.createFromResource(this, R.array.admission_year, R.layout.spinner_item);
+        admissionAdapter.setDropDownViewResource(R.layout.spinner_item);
+        deptNameSpin.setAdapter(deptAdapter);
+        admissionYearSpin.setAdapter(admissionAdapter);
         initOnClickListeners();
     }
 
