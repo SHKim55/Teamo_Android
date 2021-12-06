@@ -45,6 +45,15 @@ public class CreateTeamActivity extends AppCompatActivity {
     }
 
     private void initOnClickListener() {
+        binding.btnBackCreateTeam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateTeamActivity.this, MainActivity.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+
         binding.semesterYearSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
