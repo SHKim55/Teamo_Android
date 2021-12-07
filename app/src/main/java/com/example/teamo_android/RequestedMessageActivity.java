@@ -48,6 +48,15 @@ public class RequestedMessageActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_requested_message);
         queue = Volley.newRequestQueue(getApplicationContext());
 
+        binding.exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(RequestedMessageActivity.this, RequestListActivity.class);
+                finish();
+//                startActivity(intent);
+            }
+        });
+
         binding.acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +68,7 @@ public class RequestedMessageActivity extends AppCompatActivity {
                 finish();
             }
         });
-        binding.declineBtn.setOnClickListener(new View.OnClickListener() {
+        binding.rejectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {

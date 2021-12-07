@@ -1,7 +1,5 @@
 package com.example.teamo_android;
 
-import java.util.ArrayList;
-
 public class Member {
     private String teamId, name, department, stdNum, state, memberId;
 

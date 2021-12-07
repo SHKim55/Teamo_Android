@@ -89,8 +89,7 @@ public class MyTeamRVAdapter extends RecyclerView.Adapter<MyTeamRVAdapter.MyTeam
             menuButton = (ImageView) itemView.findViewById(R.id.btn_menu_my_team);
             requestListButton = (ImageView) itemView.findViewById(R.id.btn_request_list_my_team);
 
-            // 팀 인원 현황 추후 반영
-            String memberNumText = "1 / " + team.getMaxMemberNum() + "  모집 중";
+            String memberNumText = team.getMaxMemberNum() + " 명 모집 중";
 
             titleTv.setText(team.getTitle());
             descriptionTv.setText(team.getTag());

@@ -56,30 +56,17 @@
             app:layout_constraintStart_toEndOf="@id/text_student_num_request_list" />
 
         <TextView
-            android:id="@+id/text_date_request_list"
+            android:id="@+id/text_info_request_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="11/16"
-            android:textSize="12sp"
+            android:text="오른쪽 버튼을 눌러 해당 유저의 팀 가입 여부를 설정해주세요."
+            android:textSize="11sp"
             android:textColor="@color/theme_grey"
             android:fontFamily="@font/nanumsquareroundr"
             app:layout_constraintTop_toBottomOf="@id/text_department_request_list"
             app:layout_constraintStart_toStartOf="@id/text_department_request_list" />
-
-        <TextView
-            android:id="@+id/text_time_request_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="20:00"
-            android:textSize="12sp"
-            android:textColor="@color/theme_grey"
-            android:fontFamily="@font/nanumsquareroundr"
-            app:layout_constraintTop_toTopOf="@id/text_date_request_list"
-            app:layout_constraintBottom_toBottomOf="@id/text_date_request_list"
-            app:layout_constraintStart_toEndOf="@id/text_date_request_list" />
 
         <TextView
             android:id="@+id/text_approval_request_list"
@@ -94,8 +81,8 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundr"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_info_request_list"
+            app:layout_constraintBottom_toBottomOf="@id/text_info_request_list"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="gone" />
 
@@ -112,8 +99,8 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundr"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_info_request_list"
+            app:layout_constraintBottom_toBottomOf="@id/text_info_request_list"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="gone" />
 
@@ -130,8 +117,8 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundr"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_info_request_list"
+            app:layout_constraintBottom_toBottomOf="@id/text_info_request_list"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>

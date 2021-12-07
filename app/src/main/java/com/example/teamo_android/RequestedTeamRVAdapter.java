@@ -101,12 +101,12 @@ public class RequestedTeamRVAdapter extends RecyclerView.Adapter<RequestedTeamRV
             denyButton = (ImageView) itemView.findViewById(R.id.btn_denial_requested_team);
             newNotificationIv = (ImageView) itemView.findViewById(R.id.btn_new_notification_requested_team);
 
-            // 팀 인원 현황 추후 반영
             String memberNumText = team.getMaxMemberNum() + "명 " + "모집 중";
 
             titleTv.setText(team.getTitle());
             descriptionTv.setText(team.getTag());
             memberCountTv.setText(memberNumText);
+            recentUpdateTv.setText(team.getDate().substring(0, 10));
             RequestQueue queue = Volley.newRequestQueue(mContext);
             String userStateApi = mContext.getString(R.string.url) + "/team/state/" + team.getTeamId();
 

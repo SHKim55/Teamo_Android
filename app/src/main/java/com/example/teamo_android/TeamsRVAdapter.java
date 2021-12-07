@@ -63,12 +63,12 @@ public class TeamsRVAdapter extends RecyclerView.Adapter<TeamsRVAdapter.TeamsVie
             memberCountTv = (TextView) itemView.findViewById(R.id.text_member_count_team);
             recentUpdateTv = (TextView) itemView.findViewById(R.id.text_recent_update_team);
 
-            // 팀 인원 현황 추후 반영
-            String memberNumText = "1 / " + team.getMaxMemberNum() + "  모집 중";
+            String memberNumText = team.getMaxMemberNum() + " 명 모집 중";
 
             titleTv.setText(team.getTitle());
             descriptionTv.setText(team.getTag());
             memberCountTv.setText(memberNumText);
+            recentUpdateTv.setText(team.getDate().substring(0, 10));
         }
     }
 }

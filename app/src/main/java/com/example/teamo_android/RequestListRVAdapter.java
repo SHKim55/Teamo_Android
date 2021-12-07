@@ -63,7 +63,7 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
     }
 
     public static class RequestListViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTv, departmentTv, studentNumTv, dateTv, timeTv;
+        TextView nameTv, departmentTv, studentNumTv, infoTv;
         TextView approveTv, denyTv, waitTv;
 
         public RequestListViewHolder(@NonNull View itemView, RequestListRVAdapter.RequestListItemClickListener itemClickListener) {
@@ -74,8 +74,7 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
             nameTv = (TextView) itemView.findViewById(R.id.text_name_request_list);
             departmentTv = (TextView) itemView.findViewById(R.id.text_department_request_list);
             studentNumTv = (TextView) itemView.findViewById(R.id.text_student_num_request_list);
-            dateTv = (TextView) itemView.findViewById(R.id.text_date_request_list);
-            timeTv = (TextView) itemView.findViewById(R.id.text_time_request_list);
+            infoTv = (TextView) itemView.findViewById(R.id.text_info_request_list);
             approveTv = (TextView) itemView.findViewById(R.id.text_approval_request_list);
             denyTv = (TextView) itemView.findViewById(R.id.text_denial_request_list);
             waitTv = (TextView) itemView.findViewById(R.id.text_waiting_request_list);
@@ -89,16 +88,19 @@ public class RequestListRVAdapter extends RecyclerView.Adapter<RequestListRVAdap
                     waitTv.setVisibility(View.INVISIBLE);
                     approveTv.setVisibility(View.INVISIBLE);
                     denyTv.setVisibility(View.VISIBLE);
+                    infoTv.setText("해당 멤버의 가입을 거절하였습니다.");
                     break;
                 case 0:
                     waitTv.setVisibility(View.VISIBLE);
                     approveTv.setVisibility(View.INVISIBLE);
                     denyTv.setVisibility(View.INVISIBLE);
+                    infoTv.setText("오른쪽 버튼을 눌러 해당 유저의 팀 가입 여부를 설정해주세요.");
                     break;
                 case 1:
                     waitTv.setVisibility(View.INVISIBLE);
                     approveTv.setVisibility(View.VISIBLE);
                     denyTv.setVisibility(View.INVISIBLE);
+                    infoTv.setText("해당 멤버의 가입을 승인하였습니다.");
                     break;
             }
         }
