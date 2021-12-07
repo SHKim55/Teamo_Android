@@ -49,6 +49,9 @@ public class RequestListActivity extends AppCompatActivity {
                 Intent intent = new Intent(RequestListActivity.this, RequestedMessageActivity.class);
                 intent.putExtra("team_id", member.getTeamId());
                 intent.putExtra("member_id", member.getMemberId());
+                int prevSize = requestUsersData.size();
+                requestUsersData.clear();
+                adapter.notifyDataSetChanged();
                 startActivity(intent);
             }
 
@@ -57,7 +60,9 @@ public class RequestListActivity extends AppCompatActivity {
                 Intent intent = new Intent(RequestListActivity.this, RequestReplyActivity.class);
                 intent.putExtra("team_id", member.getTeamId());
                 intent.putExtra("sender_id", member.getMemberId());
-                checkAgain = true;
+                int prevSize = requestUsersData.size();
+                requestUsersData.clear();
+                adapter.notifyDataSetChanged();
                 startActivity(intent);
             }
         });
@@ -70,11 +75,6 @@ public class RequestListActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        if(checkAgain) {
-            int prevSize = requestUsersData.size();
-            requestUsersData.clear();
-            adapter.notifyItemRangeRemoved(0,prevSize);
-        }
         Intent intent = getIntent();
         String teamId = intent.getStringExtra("id");
         String requestedListApi = getString(R.string.url) + "/team/member/" + teamId;

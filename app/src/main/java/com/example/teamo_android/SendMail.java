@@ -10,7 +10,6 @@ import javax.mail.MessagingException;
 import javax.mail.SendFailedException;
 
 public class SendMail extends AppCompatActivity {
-
     String user = "caubappul@gmail.com";
     String password = "bappul20";
     String code;
@@ -32,7 +31,6 @@ public class SendMail extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Log.i("send", "보내졌냐고 ㅋㅋ");
     }
 
     public String getCode(){
